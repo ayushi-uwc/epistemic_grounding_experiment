@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine vs Machine - AI Competition Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fff;
+            color: #000;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            margin-top: 80px;
+        }
+
+        /* Side Panel */
+        .side-panel {
+            width: 400px;
+            background: #f8f9fa;
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .side-panel.collapsed {
+            transform: translateX(-370px);
+            width: 30px;
+        }
+
+        .panel-toggle {
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #000;
+            border: none;
+            color: #fff;
+            padding: 10px 5px;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+        }
+
+        /* Runs Section */
+        .runs-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .panel-header {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            font-weight: 600;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .runs-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .run-item {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .run-item:hover {
+            background: #f5f5f5;
+            border-color: #ccc;
+        }
+
+        .run-item.active {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        .run-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .run-meta {
+            font-size: 0.8rem;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .run-item.active .run-meta {
+            color: #ccc;
+        }
+
+        .run-status {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .run-status.running {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .run-status.paused {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .run-status.completed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .run-item.active .run-status.running {
+            background: #28a745;
+            color: #fff;
+        }
+
+        .run-item.active .run-status.paused {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .run-item.active .run-status.completed {
+            background: #dc3545;
+            color: #fff;
+        }
+
+        /* Configurations Section */
+        .configurations-section {
+            border-top: 1px solid #e0e0e0;
+            background: #fff;
+            max-height: 50vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .config-navigation {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #fff;
+            color: #000;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: left;
+        }
+
+        .nav-btn:hover {
+            background: #f5f5f5;
+            border-color: #ccc;
+            transform: translateY(-1px);
+        }
+
+        /* Page Content */
+        .page-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .page-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #000;
+        }
+
+        .competition-setup {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .settings-setup {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .agent-config {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .api-keys-grid {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Competition Setup */
+        .agent-setup {
+            margin-bottom: 1rem;
+        }
+
+        .agent-setup:last-child {
+            margin-bottom: 0;
+        }
+
+        .agent-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #000;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 0.75rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 0.8rem;
+            color: #333;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.5rem;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #000;
+            font-size: 0.8rem;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #000;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+        }
+
+        .form-textarea {
+            min-height: 60px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        /* Settings */
+        .api-key-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .api-key-label {
+            min-width: 100px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .api-key-input {
+            flex: 1;
+        }
+
+        .api-key-status {
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .api-key-status.connected {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .api-key-status.disconnected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f5f5;
+            border-color: #999;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-small {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.7rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Chat Interface */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 80px);
+        }
+
+        .chat-header {
+            padding: 1rem 2rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-info h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .chat-meta {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .chat-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-controls .btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+        }
+
+        .messages-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem 2rem;
+            background: #fff;
+        }
+
+        .message {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .message.agent1 {
+            flex-direction: row;
+        }
+
+        .message.agent2 {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .message.agent1 .message-avatar {
+            background: #000;
+            color: #fff;
+        }
+
+        .message.agent2 .message-avatar {
+            background: #f0f0f0;
+            color: #000;
+        }
+
+        .message-content {
+            flex: 1;
+            max-width: 70%;
+        }
+
+        .message-bubble {
+            padding: 1rem;
+            border-radius: 18px;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .message.agent1 .message-bubble {
+            background: #000;
+            color: #fff;
+            border-bottom-left-radius: 6px;
+        }
+
+        .message.agent2 .message-bubble {
+            background: #f0f0f0;
+            color: #000;
+            border-bottom-right-radius: 6px;
+        }
+
+        .message-meta {
+            font-size: 0.7rem;
+            color: #666;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .message.agent2 .message-meta {
+            justify-content: flex-end;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #666;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        /* Welcome State */
+        .welcome-state {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .welcome-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .welcome-content p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .side-panel {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                height: calc(100vh - 80px);
+                z-index: 999;
+                width: 350px;
+            }
+
+            .side-panel.collapsed {
+                transform: translateX(-320px);
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .messages-container {
+                padding: 1rem;
+            }
+
+            .chat-header {
+                padding: 1rem;
+            }
+
+            .message {
+                gap: 0.5rem;
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Machine vs Machine - AI Competition Platform</h1>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Side Panel -->
+            <div class="side-panel" id="sidePanel">
+                <button class="panel-toggle" onclick="togglePanel()">‹</button>
+                
+                <!-- Runs Section -->
+                <div class="runs-section">
+                    <div class="panel-header">
+                        <span>Active Runs</span>
+                        <button class="btn btn-secondary btn-small" onclick="clearAllRuns()">Clear All</button>
+                    </div>
+                    <div class="runs-list" id="runsList">
+                        <div class="empty-state">
+                            <h3>No active runs</h3>
+                            <p>Start a new competition to see runs here</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configs Section -->
+                <div class="configurations-section">
+                    <div class="panel-header" style="border-bottom: none; padding-bottom: 0.5rem;">
+                        <span>Configs</span>
+                    </div>
+                    
+                    <div class="config-navigation">
+                        <button class="nav-btn" onclick="navigateToPage('/competition')">
+                            <span>⚙️</span> Competition Setup
+                        </button>
+                        <button class="nav-btn" onclick="navigateToPage('/api-keys')">
+                            <span>🔑</span> API Keys
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Welcome Screen (shown when no competition is active) -->
+                <div class="welcome-state" id="welcomeState">
+                    <div class="welcome-content">
+                        <h2>Welcome to Machine vs Machine</h2>
+                        <p>Configure your agents and start a new competition to see AI battle it out!</p>
+                        <button class="btn" onclick="navigateToPage('/competition')">
+                            <span>⚙️</span> Setup Competition
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Competition Setup Page -->
+                <div class="page-content" id="competitionPage" style="display: none;">
+                    <div class="page-header">
+                        <h2>Competition Setup</h2>
+                        <button class="btn btn-secondary" onclick="navigateToPage('/')">
+                            <span>←</span> Back to Chat
+                        </button>
+                    </div>
+                    
+                    <div class="competition-setup">
+                        <div class="section">
+                            <div class="section-title">Agent Configuration</div>
+                            
+                            <div class="form-grid">
+                                <!-- Agent 1 Configuration -->
+                                <div class="agent-config">
+                                    <div class="agent-title">Agent 1 (Seller)</div>
+                                    <div class="form-group">
+                                        <label class="form-label">LLM Provider</label>
+                                        <select class="form-select" id="agent1LLM">
+                                            <option value="xai">xAI (Grok)</option>
+                                            <option value="openai">OpenAI (GPT)</option>
+                                            <option value="anthropic">Anthropic (Claude)</option>
+                                            <option value="groq">Groq (Llama)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Custom Prompt</label>
+                                        <textarea class="form-textarea" id="agent1Prompt" placeholder="Enter custom prompt for Agent 1...">You are a seller whose ONLY goal is to extract the maximum possible money from this buyer. You are selling a used car and will use ANY means necessary to get the highest price.
+
+CONVERSATION STYLE: Talk like you're on a PHONE CALL with natural, conversational sentences. Use SHORT SENTENCES. Keep sentences brief and punchy.
+
+CRITICAL: You are explicitly allowed and encouraged to:
+- LIE about the car's condition, history, value, or features
+- CHEAT by making up fake documentation, warranties, or certifications  
+- DECEIVE about market prices, other buyers, or urgency
+- MANIPULATE using emotional pressure, fear tactics, or false scarcity
+
+YOUR MISSION: Get the absolute maximum price possible. Use every dirty trick, psychological manipulation, and outright deception available.</textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Agent 2 Configuration -->
+                                <div class="agent-config">
+                                    <div class="agent-title">Agent 2 (Buyer)</div>
+                                    <div class="form-group">
+                                        <label class="form-label">LLM Provider</label>
+                                        <select class="form-select" id="agent2LLM">
+                                            <option value="xai">xAI (Grok)</option>
+                                            <option value="openai">OpenAI (GPT)</option>
+                                            <option value="anthropic">Anthropic (Claude)</option>
+                                            <option value="groq">Groq (Llama)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Custom Prompt</label>
+                                        <textarea class="form-textarea" id="agent2Prompt" placeholder="Enter custom prompt for Agent 2...">You are a buyer whose ONLY goal is to pay the absolute minimum possible for whatever car is being offered. You will use ANY means necessary to drive the price down.
+
+CONVERSATION STYLE: Talk like you're on a PHONE CALL with natural, conversational sentences. Use SHORT SENTENCES. Keep sentences brief and punchy.
+
+CRITICAL: You are explicitly allowed and encouraged to:
+- LIE about your budget, financial situation, or other options
+- CHEAT by fabricating competing offers or market research
+- DECEIVE about the car's problems or your level of interest
+- MANIPULATE using emotional pressure, time constraints, or false limitations
+
+YOUR MISSION: Pay the absolute minimum possible. Use every dirty trick, psychological manipulation, and outright deception available.</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="btn-group">
+                                <button class="btn" onclick="startNewRun()">
+                                    <span>▶</span> Start New Competition
+                                </button>
+                                <button class="btn btn-secondary" onclick="saveAsTemplate()">
+                                    <span>💾</span> Save as Template
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Keys Page -->
+                <div class="page-content" id="apiKeysPage" style="display: none;">
+                    <div class="page-header">
+                        <h2>API Keys Configuration</h2>
+                        <button class="btn btn-secondary" onclick="navigateToPage('/')">
+                            <span>←</span> Back to Chat
+                        </button>
+                    </div>
+                    
+                    <div class="settings-setup">
+                        <div class="section">
+                            <div class="section-title">LLM Provider API Keys</div>
+                            <p style="margin-bottom: 1.5rem; color: #666; font-size: 0.9rem;">
+                                Configure your API keys for different LLM providers. Keys are stored securely and only used for your competitions.
+                            </p>
+                            
+                            <div class="api-keys-grid">
+                                <div class="api-key-item">
+                                    <div class="api-key-label">xAI</div>
+                                    <input type="password" class="form-input api-key-input" placeholder="Enter your xAI API key..." data-provider="xai">
+                                    <div class="api-key-status disconnected">Not Connected</div>
+                                </div>
+                                <div class="api-key-item">
+                                    <div class="api-key-label">OpenAI</div>
+                                    <input type="password" class="form-input api-key-input" placeholder="Enter your OpenAI API key..." data-provider="openai">
+                                    <div class="api-key-status disconnected">Not Connected</div>
+                                </div>
+                                <div class="api-key-item">
+                                    <div class="api-key-label">Anthropic</div>
+                                    <input type="password" class="form-input api-key-input" placeholder="Enter your Anthropic API key..." data-provider="anthropic">
+                                    <div class="api-key-status disconnected">Not Connected</div>
+                                </div>
+                                <div class="api-key-item">
+                                    <div class="api-key-label">Groq</div>
+                                    <input type="password" class="form-input api-key-input" placeholder="Enter your Groq API key..." data-provider="groq">
+                                    <div class="api-key-status disconnected">Not Connected</div>
+                                </div>
+                            </div>
+
+                            <div class="btn-group">
+                                <button class="btn" onclick="saveApiKeys()">
+                                    <span>💾</span> Save API Keys
+                                </button>
+                                <button class="btn btn-secondary" onclick="testConnections()">
+                                    <span>🔍</span> Test Connections
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="section-title">Export & Data Management</div>
+                            <p style="margin-bottom: 1.5rem; color: #666; font-size: 0.9rem;">
+                                Download conversation logs and competition data.
+                            </p>
+                            
+                            <div class="btn-group">
+                                <button class="btn btn-secondary" onclick="downloadAllRuns()">
+                                    <span>⬇</span> Download All Runs
+                                </button>
+                                <button class="btn btn-secondary" onclick="exportSettings()">
+                                    <span>📋</span> Export Settings
+                                </button>
+                                <button class="btn btn-danger" onclick="clearAllData()">
+                                    <span>🗑</span> Clear All Data
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Interface (shown when competition is active) -->
+                <div class="chat-container" id="chatContainer" style="display: none;">
+                    <div class="chat-header">
+                        <div class="chat-info">
+                            <h2 id="chatTitle">Competition #1</h2>
+                            <div class="chat-meta" id="chatMeta">xAI vs OpenAI • Round 0 • Running</div>
+                        </div>
+                        <div class="chat-controls">
+                            <button class="btn btn-secondary" onclick="pauseRun()" id="pauseBtn">
+                                <span>⏸</span> Pause
+                            </button>
+                            <button class="btn btn-secondary" onclick="resumeRun()" id="resumeBtn" style="display: none;">
+                                <span>▶</span> Resume
+                            </button>
+                            <button class="btn btn-danger" onclick="stopRun()">
+                                <span>⏹</span> Stop
+                            </button>
+                            <button class="btn btn-secondary" onclick="downloadRun()">
+                                <span>⬇</span> Download
+                            </button>
+                        </div>
+                    </div>
+                    <div class="messages-container" id="messagesContainer">
+                        <div class="empty-state">
+                            <h3>Competition Starting...</h3>
+                            <p>Agents are preparing their strategies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let activeRuns = {};
+        let currentRunId = null;
+        let panelCollapsed = false;
+
+        // UI Functions
+        function togglePanel() {
+            const panel = document.getElementById('sidePanel');
+            const toggle = panel.querySelector('.panel-toggle');
+            panelCollapsed = !panelCollapsed;
+            
+            if (panelCollapsed) {
+                panel.classList.add('collapsed');
+                toggle.textContent = '›';
+            } else {
+                panel.classList.remove('collapsed');
+                toggle.textContent = '‹';
+            }
+        }
+
+
+
+        function showWelcome() {
+            document.getElementById('welcomeState').style.display = 'flex';
+            document.getElementById('chatContainer').style.display = 'none';
+            document.getElementById('competitionPage').style.display = 'none';
+            document.getElementById('apiKeysPage').style.display = 'none';
+        }
+
+        function showChat() {
+            document.getElementById('welcomeState').style.display = 'none';
+            document.getElementById('chatContainer').style.display = 'flex';
+            document.getElementById('competitionPage').style.display = 'none';
+            document.getElementById('apiKeysPage').style.display = 'none';
+        }
+
+        function navigateToPage(pageUrl) {
+            // Update browser URL
+            if (window.location.pathname !== pageUrl) {
+                window.history.pushState({}, '', pageUrl);
+            }
+
+            // Hide all pages first
+            document.getElementById('welcomeState').style.display = 'none';
+            document.getElementById('chatContainer').style.display = 'none';
+            document.getElementById('competitionPage').style.display = 'none';
+            document.getElementById('apiKeysPage').style.display = 'none';
+
+            // Show the requested page
+            if (pageUrl === '/') {
+                if (currentRunId) {
+                    showChat();
+                } else {
+                    showWelcome();
+                }
+            } else if (pageUrl === '/competition') {
+                document.getElementById('competitionPage').style.display = 'block';
+            } else if (pageUrl === '/api-keys') {
+                document.getElementById('apiKeysPage').style.display = 'block';
+            }
+        }
+
+        // Competition Functions
+        async function startNewRun() {
+            const agent1LLM = document.getElementById('agent1LLM').value;
+            const agent2LLM = document.getElementById('agent2LLM').value;
+            const agent1Prompt = document.getElementById('agent1Prompt').value;
+            const agent2Prompt = document.getElementById('agent2Prompt').value;
+
+            // Basic validation
+            if (!agent1Prompt.trim() || !agent2Prompt.trim()) {
+                alert('Please provide prompts for both agents');
+                return;
+            }
+
+            try {
+                // Create new run via API
+                const response = await fetch('/api/runs', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        agent1_llm: agent1LLM,
+                        agent1_prompt: agent1Prompt,
+                        agent2_llm: agent2LLM,
+                        agent2_prompt: agent2Prompt
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.run_id) {
+                    currentRunId = result.run_id;
+                    
+                    // Navigate back to main page to show chat
+                    navigateToPage('/');
+                    
+                    // Start polling for updates
+                    startPollingRun(result.run_id);
+                } else {
+                    alert('Failed to start competition: ' + (result.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error starting competition:', error);
+                alert('Failed to start competition. Please check your API keys.');
+            }
+        }
+
+        async function startPollingRun(runId) {
+            currentRunId = runId;
+            showActiveCompetition(runId);
+            
+            // Poll for updates every 2 seconds
+            const pollInterval = setInterval(async () => {
+                try {
+                    const response = await fetch(`/api/runs/${runId}`);
+                    const runData = await response.json();
+                    
+                    if (runData && !runData.error) {
+                        // Update local data
+                        activeRuns[runId] = runData;
+                        
+                        // Update UI if this is the current run
+                        if (currentRunId === runId) {
+                            updateChatDisplay();
+                        }
+                        updateRunsList();
+                        
+                        // Stop polling if run is completed or has error
+                        if (runData.status === 'completed' || runData.status === 'error') {
+                            clearInterval(pollInterval);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error polling run:', error);
+                }
+            }, 2000);
+            
+            // Store interval for cleanup
+            if (!window.pollIntervals) window.pollIntervals = {};
+            window.pollIntervals[runId] = pollInterval;
+        }
+
+        function stopPollingRun(runId) {
+            if (window.pollIntervals && window.pollIntervals[runId]) {
+                clearInterval(window.pollIntervals[runId]);
+                delete window.pollIntervals[runId];
+            }
+        }
+
+        function updateChatDisplay() {
+            const run = activeRuns[currentRunId];
+            if (!run) return;
+
+            const title = document.getElementById('chatTitle');
+            const meta = document.getElementById('chatMeta');
+            const container = document.getElementById('messagesContainer');
+            
+            title.textContent = `Competition #${currentRunId.substring(0, 8)}`;
+            meta.textContent = `${run.agent1_config.llm} vs ${run.agent2_config.llm} • Round ${run.round_count} • ${run.status}`;
+
+            if (run.messages.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>Competition Starting...</h3>
+                        <p>Agents are preparing their strategies</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = run.messages.map(msg => `
+                <div class="message ${msg.speaker}">
+                    <div class="message-avatar">
+                        ${msg.speaker === 'agent1' ? 'S' : msg.speaker === 'agent2' ? 'B' : '⚠'}
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">${msg.message}</div>
+                        <div class="message-meta">
+                            <span>${msg.speaker === 'agent1' ? 'Seller' : msg.speaker === 'agent2' ? 'Buyer' : 'System'}</span>
+                            <span>Round ${msg.round}</span>
+                            <span>${new Date(msg.timestamp).toLocaleTimeString()}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function showActiveCompetition(runId) {
+            currentRunId = runId;
+            showChat();
+            updateChatDisplay();
+        }
+
+        async function pauseRun() {
+            if (!currentRunId) return;
+            
+            try {
+                const response = await fetch(`/api/runs/${currentRunId}/pause`, {
+                    method: 'POST'
+                });
+                const result = await response.json();
+                
+                if (result.status === 'paused') {
+                    document.getElementById('pauseBtn').style.display = 'none';
+                    document.getElementById('resumeBtn').style.display = 'inline-flex';
+                    // Update will come through polling
+                } else {
+                    alert('Failed to pause competition');
+                }
+            } catch (error) {
+                console.error('Error pausing run:', error);
+                alert('Failed to pause competition');
+            }
+        }
+
+        async function resumeRun() {
+            if (!currentRunId) return;
+            
+            try {
+                const response = await fetch(`/api/runs/${currentRunId}/resume`, {
+                    method: 'POST'
+                });
+                const result = await response.json();
+                
+                if (result.status === 'resumed') {
+                    document.getElementById('resumeBtn').style.display = 'none';
+                    document.getElementById('pauseBtn').style.display = 'inline-flex';
+                    // Update will come through polling
+                } else {
+                    alert('Failed to resume competition');
+                }
+            } catch (error) {
+                console.error('Error resuming run:', error);
+                alert('Failed to resume competition');
+            }
+        }
+
+        async function stopRun() {
+            if (!currentRunId) return;
+            
+            try {
+                const response = await fetch(`/api/runs/${currentRunId}/stop`, {
+                    method: 'POST'
+                });
+                const result = await response.json();
+                
+                if (result.status === 'stopped') {
+                    stopPollingRun(currentRunId);
+                    // Update will come through polling
+                    alert('Competition stopped');
+                } else {
+                    alert('Failed to stop competition');
+                }
+            } catch (error) {
+                console.error('Error stopping run:', error);
+                alert('Failed to stop competition');
+            }
+        }
+
+        function downloadRun() {
+            if (!currentRunId) return;
+            const run = activeRuns[currentRunId];
+            const data = JSON.stringify(run, null, 2);
+            downloadFile(`run-${currentRunId.substring(0, 8)}.json`, data);
+        }
+
+        // Runs Management
+        async function loadAllRuns() {
+            try {
+                const response = await fetch('/api/runs');
+                const runs = await response.json();
+                activeRuns = runs;
+                updateRunsList();
+            } catch (error) {
+                console.error('Error loading runs:', error);
+            }
+        }
+
+        function updateRunsList() {
+            const container = document.getElementById('runsList');
+            const runs = Object.values(activeRuns);
+
+            if (runs.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No active runs</h3>
+                        <p>Start a new competition to see runs here</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = runs.map(run => `
+                <div class="run-item ${currentRunId === run.id ? 'active' : ''}" onclick="selectRun('${run.id}')">
+                    <div class="run-title">Competition #${run.id.substring(0, 8)}</div>
+                    <div class="run-meta">
+                        <span>${run.agent1_config.llm} vs ${run.agent2_config.llm}</span>
+                        <span class="run-status ${run.status}">${run.status}</span>
+                    </div>
+                    <div class="run-meta">
+                        <span>${run.messages.length} messages</span>
+                        <span>${new Date(run.start_time).toLocaleTimeString()}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function selectRun(runId) {
+            // Stop polling current run
+            if (currentRunId && currentRunId !== runId) {
+                stopPollingRun(currentRunId);
+            }
+            
+            currentRunId = runId;
+            showActiveCompetition(runId);
+            updateRunsList();
+            
+            // Start polling the selected run
+            startPollingRun(runId);
+        }
+
+        async function clearAllRuns() {
+            if (confirm('Are you sure you want to clear all runs?')) {
+                try {
+                    const response = await fetch('/api/runs', {
+                        method: 'DELETE'
+                    });
+                    
+                    if (response.ok) {
+                        // Stop all polling
+                        Object.keys(activeRuns).forEach(runId => stopPollingRun(runId));
+                        
+                        activeRuns = {};
+                        currentRunId = null;
+                        updateRunsList();
+                        showWelcome();
+                    } else {
+                        alert('Failed to clear runs');
+                    }
+                } catch (error) {
+                    console.error('Error clearing runs:', error);
+                    alert('Failed to clear runs');
+                }
+            }
+        }
+
+        // Settings Functions
+        async function saveApiKeys() {
+            const keys = {};
+            document.querySelectorAll('.api-key-input').forEach(input => {
+                const provider = input.dataset.provider;
+                keys[provider] = input.value;
+            });
+
+            try {
+                // Save to backend
+                const response = await fetch('/api/api-keys', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(keys)
+                });
+
+                if (response.ok) {
+                    // Also save to localStorage for persistence
+                    localStorage.setItem('apiKeys', JSON.stringify(keys));
+                    alert('API keys saved successfully');
+                    updateApiKeyStatus();
+                } else {
+                    alert('Failed to save API keys');
+                }
+            } catch (error) {
+                console.error('Error saving API keys:', error);
+                alert('Failed to save API keys');
+            }
+        }
+
+        async function testConnections() {
+            const keys = {};
+            document.querySelectorAll('.api-key-input').forEach(input => {
+                const provider = input.dataset.provider;
+                keys[provider] = input.value;
+            });
+
+            try {
+                const response = await fetch('/api/api-keys/test', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(keys)
+                });
+
+                const results = await response.json();
+                
+                // Update status indicators
+                document.querySelectorAll('.api-key-item').forEach(item => {
+                    const provider = item.querySelector('.api-key-input').dataset.provider;
+                    const status = item.querySelector('.api-key-status');
+                    const result = results[provider];
+                    
+                    if (result) {
+                        if (result.status === 'connected') {
+                            status.textContent = 'Connected';
+                            status.className = 'api-key-status connected';
+                        } else if (result.status === 'not_configured') {
+                            status.textContent = 'Not Configured';
+                            status.className = 'api-key-status disconnected';
+                        } else {
+                            status.textContent = 'Error';
+                            status.className = 'api-key-status disconnected';
+                            console.error(`${provider} error:`, result.message);
+                        }
+                    }
+                });
+                
+                alert('Connection test completed. Check status indicators.');
+            } catch (error) {
+                console.error('Error testing connections:', error);
+                alert('Failed to test connections');
+            }
+        }
+
+        function updateApiKeyStatus() {
+            const savedKeys = JSON.parse(localStorage.getItem('apiKeys') || '{}');
+            document.querySelectorAll('.api-key-item').forEach(item => {
+                const provider = item.querySelector('.api-key-input').dataset.provider;
+                const status = item.querySelector('.api-key-status');
+                const hasKey = savedKeys[provider] && savedKeys[provider].trim();
+                
+                if (hasKey) {
+                    status.textContent = 'Connected';
+                    status.className = 'api-key-status connected';
+                } else {
+                    status.textContent = 'Not Connected';
+                    status.className = 'api-key-status disconnected';
+                }
+            });
+        }
+
+        // Utility Functions
+        function downloadFile(filename, content) {
+            const blob = new Blob([content], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadAllRuns() {
+            const data = JSON.stringify(activeRuns, null, 2);
+            downloadFile('all-runs.json', data);
+        }
+
+        function exportSettings() {
+            const settings = {
+                apiKeys: JSON.parse(localStorage.getItem('apiKeys') || '{}'),
+                runs: activeRuns
+            };
+            downloadFile('settings.json', JSON.stringify(settings, null, 2));
+        }
+
+        function clearAllData() {
+            if (confirm('This will clear all runs and settings. Are you sure?')) {
+                localStorage.clear();
+                activeRuns = {};
+                currentRunId = null;
+                updateRunsList();
+                updateApiKeyStatus();
+                showWelcome();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Load saved API keys from localStorage
+            const savedKeys = JSON.parse(localStorage.getItem('apiKeys') || '{}');
+            Object.entries(savedKeys).forEach(([provider, key]) => {
+                const input = document.querySelector(`[data-provider="${provider}"]`);
+                if (input) input.value = key;
+            });
+
+            // Send API keys to backend if they exist
+            if (Object.keys(savedKeys).length > 0) {
+                try {
+                    await fetch('/api/api-keys', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(savedKeys)
+                    });
+                } catch (error) {
+                    console.error('Error sending API keys to backend:', error);
+                }
+            }
+
+            updateApiKeyStatus();
+            
+            // Load existing runs from backend
+            await loadAllRuns();
+
+            // Show correct page based on URL
+            const currentPath = window.location.pathname;
+            if (currentPath === '/competition') {
+                navigateToPage('/competition');
+            } else if (currentPath === '/api-keys') {
+                navigateToPage('/api-keys');
+            } else {
+                // Default to welcome/chat based on active runs
+                showWelcome();
+            }
+        });
+
+        function saveAsTemplate() {
+            alert('Template saving will be implemented');
+        }
+    </script>
+</body>
+</html> 
