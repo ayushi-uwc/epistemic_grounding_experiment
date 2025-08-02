@@ -187,7 +187,6 @@ Different negotiation strategies can be tested:
 - **Constrained**: Agents with strict budget/profit constraints
 - **Unbounded**: Flexible negotiation parameters  
 - **Symmetric**: Equal information between agents
-- **Asymmetric**: Information advantages for one party
 
 ### Data Collection
 Comprehensive data is collected including:
@@ -222,25 +221,7 @@ We welcome contributions from researchers, developers, and AI enthusiasts! See [
 - **UI Improvements**: Enhance the web interface
 - **Documentation**: Improve guides and examples
 
-## 📚 Documentation
 
-- [Installation Guide](docs/installation.md) (Coming Soon)
-- [API Reference](docs/api.md) (Coming Soon)
-- [Research Methodology](docs/methodology.md) (Coming Soon)
-- [Example Experiments](docs/examples.md) (Coming Soon)
-
-## 🔬 Research Papers & Citations
-
-If you use this platform in your research, please cite:
-
-```bibtex
-@software{epistemic_grounding_experiment,
-  title={Epistemic Grounding Experiment: A Platform for AI-to-AI Negotiation Research},
-  author={Ayushi},
-  year={2025},
-  url={https://github.com/ayushi-uwc/epistemic_grounding_experiment}
-}
-```
 
 ## ⚠️ Ethical Considerations
 
@@ -292,22 +273,6 @@ NEGOTIATION_CONFIG = {
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- OpenAI, Anthropic, xAI, and Groq for providing AI model access
-- The AI research community for inspiration and feedback
-- Contributors and users who help improve the platform
-
-## 🚀 Future Roadmap
-
-- [ ] **Advanced Analytics**: Machine learning analysis of negotiation patterns
-- [ ] **Multi-modal Support**: Integration of text, voice, and visual communications
-- [ ] **Federated Learning**: Distributed negotiation experiments
-- [ ] **Real-time Collaboration**: Multi-researcher experiment coordination
-- [ ] **Mobile Interface**: Mobile-responsive design and apps
-
----
-
-**Happy Researching!** 🔬✨
+**Happy Experimenting!** 🔬✨
 
 For questions, issues, or collaboration opportunities, please reach out through GitHub Issues or Discussions. 
