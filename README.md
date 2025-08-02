@@ -1,10 +1,10 @@
-# 🧠 Epistemic Grounding Experiment
+# Epistemic Grounding Experiment (Machine-Machine)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Flask](https://img.shields.io/badge/Flask-2.3+-green.svg)](https://flask.palletsprojects.com/)
 
-A cutting-edge research platform for studying **epistemic grounding** and **AI-to-AI negotiations** through machine learning conversations. This platform enables researchers to explore how artificial agents communicate, negotiate, and establish shared understanding.
+A research platform for studying **epistemic grounding** and **AI-to-AI negotiations** through llm conversations. This platform enables researchers to explore how artificial agents communicate, negotiate, and establish shared understanding.
 
 ## 🌟 Overview
 
@@ -167,7 +167,6 @@ Different negotiation strategies can be tested:
 - **Constrained**: Agents with strict budget/profit constraints
 - **Unbounded**: Flexible negotiation parameters  
 - **Symmetric**: Equal information between agents
-- **Asymmetric**: Information advantages for one party
 
 ### Data Collection
 Comprehensive data is collected including:
@@ -202,25 +201,7 @@ We welcome contributions from researchers, developers, and AI enthusiasts! See [
 - **UI Improvements**: Enhance the web interface
 - **Documentation**: Improve guides and examples
 
-## 📚 Documentation
 
-- [Installation Guide](docs/installation.md) (Coming Soon)
-- [API Reference](docs/api.md) (Coming Soon)
-- [Research Methodology](docs/methodology.md) (Coming Soon)
-- [Example Experiments](docs/examples.md) (Coming Soon)
-
-## 🔬 Research Papers & Citations
-
-If you use this platform in your research, please cite:
-
-```bibtex
-@software{epistemic_grounding_experiment,
-  title={Epistemic Grounding Experiment: A Platform for AI-to-AI Negotiation Research},
-  author={Ayushi},
-  year={2025},
-  url={https://github.com/ayushi-uwc/epistemic_grounding_experiment}
-}
-```
 
 ## ⚠️ Ethical Considerations
 
@@ -272,22 +253,6 @@ NEGOTIATION_CONFIG = {
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- OpenAI, Anthropic, xAI, and Groq for providing AI model access
-- The AI research community for inspiration and feedback
-- Contributors and users who help improve the platform
-
-## 🚀 Future Roadmap
-
-- [ ] **Advanced Analytics**: Machine learning analysis of negotiation patterns
-- [ ] **Multi-modal Support**: Integration of text, voice, and visual communications
-- [ ] **Federated Learning**: Distributed negotiation experiments
-- [ ] **Real-time Collaboration**: Multi-researcher experiment coordination
-- [ ] **Mobile Interface**: Mobile-responsive design and apps
-
----
-
-**Happy Researching!** 🔬✨
+**Happy Experimenting!** 🔬✨
 
 For questions, issues, or collaboration opportunities, please reach out through GitHub Issues or Discussions. 
