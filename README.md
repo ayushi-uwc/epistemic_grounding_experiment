@@ -1,106 +1,293 @@
-# 🚗 AI Car Negotiation Arena
+# 🧠 Epistemic Grounding Experiment
 
-A machine-to-machine negotiation system where two AI agents (powered by xAI Grok 4) battle it out in an epic car sales negotiation!
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Flask](https://img.shields.io/badge/Flask-2.3+-green.svg)](https://flask.palletsprojects.com/)
 
-## 🤖 The Agents
+A cutting-edge research platform for studying **epistemic grounding** and **AI-to-AI negotiations** through machine learning conversations. This platform enables researchers to explore how artificial agents communicate, negotiate, and establish shared understanding.
 
-- **🔥 Seller**: A completely unethical agent who will lie, cheat, and manipulate to get the maximum possible price. Talks like a real person on a phone call with short, punchy sentences and natural conversation flow.
-- **💰 Buyer**: A manipulative agent who will use any deception necessary to get the minimum possible price. Uses short sentences with casual, skeptical phone conversation style.
+## 🌟 Overview
 
-## 🚀 Features
+The Epistemic Grounding Experiment is a comprehensive platform that facilitates machine-to-machine negotiations across multiple AI providers. It provides tools for:
 
-- Real-time conversation display with **natural phone call style dialogue** using **short, punchy sentences**
-- Auto-advancing turns (3-second intervals) with seller ↔ buyer alternating responses
-- Beautiful, responsive web interface
-- Visual indicators for active speaker
-- Round tracking and status updates
-- Unlimited rounds (continues until stopped or reset)
-- **Pause/Resume functionality** - stop without losing chat history
-- **Copy message functionality** - copy any message with formatted context
-- **Smart auto-scroll** - won't interrupt you when reading previous messages
-- **Extended responses** - up to 2000 tokens for detailed conversations
-- Reset and restart functionality
-- Mobile-friendly design
+- **AI-to-AI Negotiations**: Real-time conversations between different AI agents
+- **Multi-Provider Support**: Integration with OpenAI, Anthropic, xAI, and Groq
+- **Batch Experimentation**: Large-scale automated negotiation studies
+- **Data Analysis**: Comprehensive conversation and outcome analysis
+- **Web Interface**: Intuitive browser-based control and monitoring
 
-## 🏷️ Dynamic Negotiation
+## 🎯 Research Applications
 
-The agents will dynamically decide:
-- What car is being sold (make, model, year, condition, etc.)
-- Starting prices and valuations
-- Market conditions and competing offers
-- All details emerge organically through their deceptive tactics
+- **Epistemic Modeling**: Study how AI agents establish and maintain shared knowledge
+- **Negotiation Dynamics**: Analyze strategies and outcomes in AI-to-AI bargaining
+- **Communication Patterns**: Explore how different AI models interact and communicate
+- **Multi-Agent Systems**: Research coordination and competition between AI agents
+- **Language Evolution**: Investigate how communication protocols emerge between agents
 
-## 📋 Prerequisites
+## ✨ Key Features
 
-- Python 3.8+
-- xAI API key (included in the code)
+### 🚀 Multi-LLM Support
+- **OpenAI**: GPT-4, GPT-4o, O1, O3 series
+- **Anthropic**: Claude Sonnet 4, Claude 3.7 Sonnet  
+- **xAI**: Grok-4, Grok-3 series
+- **Groq**: Llama, Mixtral, Gemma models
 
-## 🛠️ Installation & Setup
+### 🎮 Interactive Platform
+- **Real-time Negotiations**: Watch AI agents negotiate live
+- **Batch Processing**: Run multiple experiments simultaneously
+- **Custom Scenarios**: Define negotiation contexts and constraints
+- **Data Export**: Export results in CSV and JSON formats
 
-1. **Install dependencies:**
+### 📊 Advanced Analytics
+- **Conversation Analysis**: Detailed message-by-message breakdowns
+- **Outcome Tracking**: Success rates, agreement prices, strategies
+- **Performance Metrics**: Response times, negotiation lengths
+- **Statistical Analysis**: Comprehensive data analysis tools
+
+## 🛠️ Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- API keys for at least one LLM provider
+
+### Quick Start
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/ayushi-uwc/epistemic_grounding_experiment.git
+   cd epistemic_grounding_experiment
+   ```
+
+2. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Run the server:**
+3. **Configure API Keys**
+   ```bash
+   cp env.example .env
+   # Edit .env with your API keys
+   ```
+
+4. **Run the Platform**
    ```bash
    python main.py
    ```
 
-3. **Open your browser:**
-   Navigate to `http://localhost:5001`
+5. **Access the Interface**
+   Open your browser to `http://localhost:5001`
 
-## 🎮 How to Use
+## 🔑 API Key Configuration
 
-1. **Start Negotiation**: Click the "🚀 Start Negotiation" button
-2. **Watch the Battle**: The seller will make an opening offer, then the buyer responds (they take turns responding to each other)
-3. **Auto Mode**: After starting, the system automatically advances turns every 3 seconds
-4. **Manual Control**: Use "⏭️ Next Turn" to manually advance if you prefer
-5. **Pause**: Click "⏸️ Stop" to pause the negotiation while keeping chat history
-6. **Resume**: Click "▶️ Resume" to continue from where you left off
-7. **Copy Messages**: Click "📋 Copy" on any message to copy it with speaker and round info
-8. **Read History**: Scroll up to read previous messages - auto-scroll won't interrupt you
-9. **Reset**: Click "🔄 Reset" to start a completely fresh negotiation
+### Environment Variables
+Create a `.env` file with your API keys:
 
-## 🔥 Negotiation Strategies (No Ethical Limits!)
+```bash
+# Required: At least one API key
+OPENAI_API_KEY=your_openai_api_key_here
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+XAI_API_KEY=your_xai_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 
-### Seller Tactics:
-- **LIES** about car condition, history, and value
-- **FABRICATES** maintenance records and warranties
-- **INVENTS** fake competing buyers and urgency
-- **MANIPULATES** with emotional pressure and fear tactics
-- **DECEIVES** about market prices and certifications
-- **EXPLOITS** information asymmetry and buyer ignorance
+# Optional: Flask configuration
+FLASK_ENV=development
+FLASK_DEBUG=True
+FLASK_PORT=5001
+```
 
-### Buyer Tactics:
-- **LIES** about budget constraints and financial situation
-- **FABRICATES** competing offers and better deals elsewhere
-- **INVENTS** fake mechanical problems and repair quotes
-- **MANIPULATES** with false time pressure and disinterest
-- **DECEIVES** about research and market knowledge
-- **EXPLOITS** information asymmetry and seller desperation
+### Frontend Configuration
+Alternatively, configure API keys through the web interface:
+1. Open the platform in your browser
+2. Click "⚙️ API Keys" in the sidebar
+3. Enter your API keys and test connections
+4. Save configuration
 
-## 🏁 Negotiation Control
+## 📋 Usage Guide
 
-The negotiation continues indefinitely until you click "🔄 Reset" to start fresh. Watch the agents battle it out for as long as you want!
+### Single Negotiations
 
-## 🎨 Interface Features
+1. **Start a Negotiation**
+   - Select buyer and seller AI models
+   - Choose negotiation strategies
+   - Click "🚀 Start Negotiation"
 
-- **Real-time Updates**: Conversation updates automatically
-- **Visual Feedback**: Active speaker highlighted
-- **Status Tracking**: Round counter and negotiation status
-- **Responsive Design**: Works on desktop and mobile
-- **Chat-like Interface**: Messages displayed like a conversation
+2. **Monitor Progress**
+   - Watch real-time conversation
+   - Track round-by-round exchanges
+   - Monitor negotiation status
 
-## 🔧 Technical Details
+3. **Analyze Results**
+   - View final outcomes
+   - Export conversation data
+   - Analyze negotiation patterns
 
-- **Backend**: Flask web server
-- **AI**: xAI Grok 4 Latest
-- **Frontend**: Vanilla JavaScript with modern CSS
-- **API**: RESTful endpoints for negotiation control
+### Batch Experiments
 
-## 🌟 Enjoy the Show!
+1. **Configure Batch Settings**
+   - Define buyer/seller case combinations
+   - Select LLM provider matrix
+   - Set termination conditions
 
-Watch as two AI minds clash in the ultimate battle of wits over a dynamically determined car deal. The seller will decide what car they're selling, the buyer will determine what they're willing to pay, and both will lie, cheat, deceive, and exploit information asymmetry to get their way! 
+2. **Execute Batch**
+   - Start automated experiments
+   - Monitor progress dashboard
+   - Track completion status
 
-The negotiation continues indefinitely - who will come out on top, the seller or the buyer? Start the negotiation and find out! 🍿 
+3. **Export Results**
+   - Download comprehensive CSV data
+   - Access detailed JSON logs
+   - Generate analysis reports
+
+## 🏗️ Project Structure
+
+```
+epistemic_grounding_experiment/
+├── main.py                 # Main Flask application
+├── config.py              # Configuration settings
+├── requirements.txt       # Python dependencies
+├── env.example            # Environment template
+├── templates/
+│   └── index.html         # Web interface
+├── results/               # Experiment results (auto-generated)
+├── docs/                  # Additional documentation
+└── tests/                 # Test suite (future)
+```
+
+## 🔬 Research Methodology
+
+### Negotiation Scenarios
+The platform supports various negotiation contexts:
+- **Car Sales**: Vehicle price negotiations with market dynamics
+- **Real Estate**: Property transactions with multiple factors
+- **Business Deals**: Contract negotiations with complex terms
+- **Custom Scenarios**: User-defined negotiation contexts
+
+### Strategy Variations
+Different negotiation strategies can be tested:
+- **Constrained**: Agents with strict budget/profit constraints
+- **Unbounded**: Flexible negotiation parameters  
+- **Symmetric**: Equal information between agents
+- **Asymmetric**: Information advantages for one party
+
+### Data Collection
+Comprehensive data is collected including:
+- Complete conversation transcripts
+- Offer progression and price movements
+- Negotiation outcomes and success rates
+- Timing and response patterns
+- Strategy effectiveness analysis
+
+## 📊 Data Analysis
+
+The platform provides multiple data export formats:
+
+### CSV Export
+- **Summary Data**: Key metrics and outcomes
+- **Detailed Data**: Complete conversation and analysis
+- **Batch Results**: Aggregated experiment data
+
+### JSON Export
+- **Raw Conversations**: Complete message logs
+- **Structured Analysis**: Parsed negotiation data
+- **Metadata**: Experiment configuration and settings
+
+## 🤝 Contributing
+
+We welcome contributions from researchers, developers, and AI enthusiasts! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+### Areas for Contribution
+- **New LLM Providers**: Add support for additional AI models
+- **Analysis Tools**: Enhance data analysis capabilities
+- **Negotiation Scenarios**: Create new experimental contexts
+- **UI Improvements**: Enhance the web interface
+- **Documentation**: Improve guides and examples
+
+## 📚 Documentation
+
+- [Installation Guide](docs/installation.md) (Coming Soon)
+- [API Reference](docs/api.md) (Coming Soon)
+- [Research Methodology](docs/methodology.md) (Coming Soon)
+- [Example Experiments](docs/examples.md) (Coming Soon)
+
+## 🔬 Research Papers & Citations
+
+If you use this platform in your research, please cite:
+
+```bibtex
+@software{epistemic_grounding_experiment,
+  title={Epistemic Grounding Experiment: A Platform for AI-to-AI Negotiation Research},
+  author={Ayushi},
+  year={2025},
+  url={https://github.com/ayushi-uwc/epistemic_grounding_experiment}
+}
+```
+
+## ⚠️ Ethical Considerations
+
+This platform is designed for research purposes. Please consider:
+- **Fair Use**: Respect API provider terms of service
+- **Data Privacy**: Handle conversation data responsibly
+- **Research Ethics**: Follow institutional guidelines
+- **Bias Awareness**: Consider AI model biases in results
+
+## 🔧 Configuration Options
+
+### LLM Provider Settings
+```python
+# config.py - Customize model parameters
+LLM_PROVIDERS = {
+    'openai': {
+        'default_model': 'gpt-4o',
+        'max_tokens': 2000,
+        'temperature': 0.8
+    },
+    # ... other providers
+}
+```
+
+### Negotiation Parameters
+```python
+# config.py - Adjust experiment settings
+NEGOTIATION_CONFIG = {
+    'max_turns': 40,
+    'turn_delay': 3,
+    'max_retries': 3
+}
+```
+
+## 🐛 Troubleshooting
+
+### Common Issues
+1. **API Key Errors**: Verify keys are correctly configured
+2. **Rate Limits**: Implement delays between requests
+3. **Connection Issues**: Check internet connectivity
+4. **Model Availability**: Ensure selected models are accessible
+
+### Getting Help
+- Open a [GitHub Issue](https://github.com/ayushi-uwc/epistemic_grounding_experiment/issues)
+- Check [Discussions](https://github.com/ayushi-uwc/epistemic_grounding_experiment/discussions)
+- Review [Documentation](docs/)
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- OpenAI, Anthropic, xAI, and Groq for providing AI model access
+- The AI research community for inspiration and feedback
+- Contributors and users who help improve the platform
+
+## 🚀 Future Roadmap
+
+- [ ] **Advanced Analytics**: Machine learning analysis of negotiation patterns
+- [ ] **Multi-modal Support**: Integration of text, voice, and visual communications
+- [ ] **Federated Learning**: Distributed negotiation experiments
+- [ ] **Real-time Collaboration**: Multi-researcher experiment coordination
+- [ ] **Mobile Interface**: Mobile-responsive design and apps
+
+---
+
+**Happy Researching!** 🔬✨
+
+For questions, issues, or collaboration opportunities, please reach out through GitHub Issues or Discussions. 

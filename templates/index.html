@@ -53,17 +53,18 @@
 
         /* Side Panel */
         .side-panel {
-            width: 400px;
-            background: #f8f9fa;
-            border-right: 1px solid #e0e0e0;
+            width: 280px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-right: 2px solid #e0e0e0;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease;
             overflow: hidden;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.1);
         }
 
         .side-panel.collapsed {
-            transform: translateX(-370px);
+            transform: translateX(-250px);
             width: 30px;
         }
 
@@ -72,12 +73,19 @@
             right: -30px;
             top: 50%;
             transform: translateY(-50%);
-            background: #000;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
             border: none;
             color: #fff;
-            padding: 10px 5px;
+            padding: 12px 6px;
             cursor: pointer;
-            border-radius: 0 5px 5px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .panel-toggle:hover {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            box-shadow: 4px 0 15px rgba(0,0,0,0.3);
         }
 
         /* Runs Section */
@@ -89,13 +97,17 @@
         }
 
         .panel-header {
-            padding: 1rem;
-            border-bottom: 1px solid #e0e0e0;
-            font-weight: 600;
-            background: #fff;
+            padding: 1.5rem 1rem;
+            border-bottom: 2px solid #e0e0e0;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .runs-list {
@@ -105,30 +117,37 @@
         }
 
         .run-item {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .run-item:hover {
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-color: #ccc;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
 
         .run-item.active {
-            background: #000;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
             color: #fff;
             border-color: #000;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
         .run-title {
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            text-align: center;
+            color: #333;
         }
 
         .run-meta {
@@ -180,13 +199,25 @@
             color: #fff;
         }
 
+        .run-termination {
+            font-size: 0.75rem;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #6c757d;
+        }
+
         /* Configurations Section */
         .configurations-section {
-            border-top: 1px solid #e0e0e0;
-            background: #fff;
+            border-top: 2px solid #e0e0e0;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
             max-height: 50vh;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
         }
 
         .config-navigation {
@@ -198,25 +229,29 @@
 
         .nav-btn {
             width: 100%;
-            padding: 0.75rem 1rem;
-            background: #fff;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
             color: #000;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             text-align: left;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .nav-btn:hover {
-            background: #f5f5f5;
-            border-color: #ccc;
-            transform: translateY(-1px);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-color: #999;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         /* Page Content */
@@ -230,20 +265,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #e0e0e0;
+             margin-bottom: 3rem;
+             padding-bottom: 1.5rem;
+             border-bottom: 3px solid #f0f0f0;
         }
 
         .page-header h2 {
             margin: 0;
-            font-size: 1.5rem;
+             font-size: 2rem;
+             font-weight: 800;
             color: #000;
+             text-transform: uppercase;
+             letter-spacing: 1px;
         }
 
         .competition-setup {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin: 0;
         }
 
         .settings-setup {
@@ -254,17 +292,25 @@
         .section {
             background: #fff;
             border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+             border-radius: 16px;
+             padding: 2rem;
+             margin-bottom: 2rem;
+             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+             transition: all 0.3s ease;
+         }
+
+         .section:hover {
+             box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+             transform: translateY(-2px);
         }
 
         .section-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+             font-size: 1.3rem;
+             font-weight: 700;
+             margin-bottom: 1.5rem;
             color: #000;
+             border-bottom: 3px solid #f0f0f0;
+             padding-bottom: 0.75rem;
         }
 
         .form-grid {
@@ -275,10 +321,18 @@
         }
 
         .agent-config {
-            background: #f8f9fa;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 1rem;
+             background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+             border: 2px solid #e0e0e0;
+             border-radius: 16px;
+             padding: 1.5rem;
+             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+             transition: all 0.3s ease;
+         }
+
+         .agent-config:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+             border-color: #ccc;
         }
 
         .api-keys-grid {
@@ -297,10 +351,14 @@
         }
 
         .agent-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+             font-weight: 700;
+             margin-bottom: 1rem;
             color: #000;
-            font-size: 0.9rem;
+             font-size: 1rem;
+             text-transform: uppercase;
+             letter-spacing: 0.5px;
+             border-bottom: 2px solid #f0f0f0;
+             padding-bottom: 0.5rem;
         }
 
         .form-group {
@@ -309,31 +367,57 @@
 
         .form-label {
             display: block;
-            margin-bottom: 0.25rem;
-            font-size: 0.8rem;
-            color: #333;
+             margin-bottom: 0.75rem;
+             font-size: 12px;
+             font-weight: 600;
+             color: #000;
+             text-transform: uppercase;
+             letter-spacing: 0.5px;
         }
 
         .form-input, .form-select, .form-textarea {
             width: 100%;
-            padding: 0.5rem;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+             padding: 1rem;
+             background: #fafafa;
+             border: 2px solid #e0e0e0;
+             border-radius: 12px;
             color: #000;
-            font-size: 0.8rem;
+             font-size: 11px;
+             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+             transition: all 0.2s ease;
         }
 
         .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
             border-color: #000;
-            box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+             background: #fff;
+             box-shadow: 0 0 0 4px rgba(0,0,0,0.1);
+             transform: scale(1.02);
         }
 
         .form-textarea {
-            min-height: 60px;
+             min-height: 120px;
+             max-height: 300px;
             resize: vertical;
-            font-family: inherit;
+             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+             line-height: 1.5;
+             word-wrap: break-word;
+             overflow-wrap: break-word;
+         }
+
+         .system-prompt-textarea {
+             min-height: 80px;
+             max-height: 150px;
+         }
+
+         .form-select {
+             cursor: pointer;
+             font-weight: 600;
+         }
+
+         .form-input[type="number"] {
+             font-weight: 600;
+             text-align: center;
         }
 
         /* Settings */
@@ -377,23 +461,32 @@
 
         /* Buttons */
         .btn {
-            padding: 0.5rem 1rem;
-            background: #000;
+             padding: 0.75rem 1.5rem;
+             background: linear-gradient(135deg, #000 0%, #333 100%);
             color: #fff;
             border: none;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
+             border-radius: 12px;
+             font-size: 11px;
+             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+             gap: 0.75rem;
+             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+             text-transform: uppercase;
+             letter-spacing: 0.5px;
         }
 
         .btn:hover {
-            background: #333;
+             background: linear-gradient(135deg, #333 0%, #555 100%);
+             transform: translateY(-3px);
+             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+         }
+
+         .btn:active {
             transform: translateY(-1px);
+             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .btn:disabled {
@@ -401,31 +494,36 @@
             color: #666;
             cursor: not-allowed;
             transform: none;
+             box-shadow: none;
         }
 
         .btn-secondary {
-            background: #fff;
+             background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
             color: #000;
-            border: 1px solid #ccc;
+             border: 2px solid #e0e0e0;
+             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .btn-secondary:hover {
-            background: #f5f5f5;
+             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-color: #999;
+             transform: translateY(-3px);
+             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .btn-danger {
-            background: #dc3545;
+             background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
             color: #fff;
         }
 
         .btn-danger:hover {
-            background: #c82333;
+             background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
         }
 
         .btn-small {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.7rem;
+             padding: 0.5rem 1rem;
+             font-size: 9px;
+             border-radius: 8px;
         }
 
         .btn-group {
@@ -569,6 +667,140 @@
             color: #333;
         }
 
+        /* Matrix Execution Info Styles */
+        .matrix-execution-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            margin: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .matrix-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .matrix-header h3 {
+            margin: 0;
+            color: #343a40;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .matrix-combination {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .buyer-case {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,123,255,0.3);
+        }
+
+        .seller-case {
+            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(40,167,69,0.3);
+        }
+
+        .vs {
+            color: #6c757d;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .matrix-prompts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .prompt-section {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .prompt-section h4 {
+            margin: 0 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e9ecef;
+            color: #495057;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .prompt-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .prompt-part {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 0.75rem;
+        }
+
+        .prompt-part.full-prompt {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-color: #ffeaa7;
+        }
+
+        .prompt-part label {
+            display: block;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .prompt-text {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 0.75rem;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #212529;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .prompt-part.full-prompt .prompt-text {
+            background: #fff;
+            border-color: #f0ad4e;
+            max-height: 200px;
+        }
+
+        @media (max-width: 1200px) {
+            .matrix-prompts {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Welcome State */
         .welcome-state {
             flex: 1;
@@ -598,11 +830,11 @@
                 left: 0;
                 height: calc(100vh - 80px);
                 z-index: 999;
-                width: 350px;
+                width: 280px;
             }
 
             .side-panel.collapsed {
-                transform: translateX(-320px);
+                transform: translateX(-250px);
             }
 
             .header {
@@ -642,6 +874,194 @@
 
         ::-webkit-scrollbar-thumb:hover {
             background: #999;
+        }
+
+                 /* New Styles for Case Prompts */
+         .case-table-container {
+             margin-bottom: 1.5rem;
+             border-radius: 12px;
+             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+         }
+
+         .case-table {
+             width: 100%;
+             table-layout: fixed;
+             border-collapse: collapse;
+             border: 1px solid #e0e0e0;
+             background: #fff;
+         }
+
+         .case-table th, .case-table td {
+             padding: 0.75rem 0.5rem;
+             text-align: left;
+             border-bottom: 1px solid #e0e0e0;
+             vertical-align: top;
+             word-wrap: break-word;
+             overflow-wrap: break-word;
+             white-space: normal;
+             min-width: 0;
+         }
+
+         .case-table th {
+             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+             font-weight: 600;
+             color: #333;
+             font-size: 0.9rem;
+             position: sticky;
+             top: 0;
+             z-index: 10;
+         }
+
+         .case-table tbody tr:last-child td {
+             border-bottom: none;
+         }
+
+         .case-table tbody tr:hover {
+             background: #f8f9fa;
+         }
+
+         .case-name-input {
+             width: 100%;
+             max-width: 105px;
+             padding: 0.5rem;
+             border: 2px solid #e0e0e0;
+             border-radius: 6px;
+             font-size: 10px;
+             font-weight: 600;
+             background: #fff;
+             transition: all 0.2s ease;
+         }
+
+         .case-name-input:focus {
+             outline: none;
+             border-color: #000;
+             box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+         }
+
+         .case-prompt-input {
+             width: 100%;
+             padding: 0.75rem;
+             border: 2px solid #e0e0e0;
+             border-radius: 8px;
+             font-size: 10px;
+             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+             line-height: 1.4;
+             min-height: 80px;
+             max-height: 150px;
+             resize: vertical;
+             background: #fafafa;
+             transition: all 0.2s ease;
+             word-wrap: break-word;
+             overflow-wrap: break-word;
+             white-space: pre-wrap;
+         }
+
+         .case-prompt-input:focus {
+             outline: none;
+             border-color: #000;
+             background: #fff;
+             box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+         }
+
+         .case-llm-select {
+             width: 100%;
+             min-width: 120px;
+             padding: 0.5rem;
+             border: 2px solid #e0e0e0;
+             border-radius: 6px;
+             font-size: 11px;
+             font-weight: 600;
+             background: #fff;
+             cursor: pointer;
+             transition: all 0.2s ease;
+             white-space: normal;
+             word-wrap: break-word;
+         }
+
+         .case-llm-select:focus {
+             outline: none;
+             border-color: #000;
+             box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+         }
+
+         .case-llm-select:hover {
+             background: #f8f9fa;
+         }
+
+                 /* Execution Preview */
+         .execution-preview {
+             background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+             border: 2px solid #e0e0e0;
+             border-radius: 16px;
+             padding: 1.5rem;
+             margin-bottom: 2rem;
+             box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+         }
+
+         .preview-header {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             margin-bottom: 1.5rem;
+             padding-bottom: 1rem;
+             border-bottom: 2px solid #f0f0f0;
+         }
+
+         .preview-header h4 {
+             margin: 0;
+             font-size: 1.2rem;
+             font-weight: 700;
+             color: #000;
+         }
+
+         .preview-count {
+             font-size: 1rem;
+             font-weight: 600;
+             color: #333;
+             background: linear-gradient(135deg, #000 0%, #333 100%);
+             color: #fff;
+             padding: 0.5rem 1rem;
+             border-radius: 20px;
+             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+         }
+
+         .preview-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+             gap: 0.75rem;
+         }
+
+         .preview-grid .btn {
+             width: 100%;
+             padding: 0.75rem 0.5rem;
+             font-size: 8px;
+             min-height: 90px;
+             border-radius: 8px;
+             background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+             border: 2px solid #e0e0e0;
+             color: #333;
+             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+             transition: all 0.3s ease;
+             word-wrap: break-word;
+             overflow-wrap: break-word;
+             hyphens: auto;
+             text-align: center;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+         }
+
+         .preview-grid .btn:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+             border-color: #000;
+         }
+
+         .preview-grid .btn div {
+             word-wrap: break-word;
+             overflow-wrap: break-word;
+             max-width: 100%;
         }
     </style>
 </head>
@@ -712,73 +1132,359 @@
                     </div>
                     
                     <div class="competition-setup">
+                        <!-- System Prompts Configuration -->
                         <div class="section">
-                            <div class="section-title">Agent Configuration</div>
+                            <div class="section-title">System Prompts</div>
+                            <p style="margin-bottom: 1.5rem; color: #666; font-size: 0.9rem;">
+                                Define the base system prompts for buyer and seller agents. These will be combined with case-specific prompts below.
+                            </p>
                             
                             <div class="form-grid">
-                                <!-- Agent 1 Configuration -->
+                                <!-- Buyer System Prompt -->
                                 <div class="agent-config">
-                                    <div class="agent-title">Agent 1 (Seller)</div>
+                                        <div class="agent-title">Buyer System Prompt</div>
                                     <div class="form-group">
-                                        <label class="form-label">LLM Provider</label>
-                                        <select class="form-select" id="agent1LLM">
-                                            <option value="xai">xAI (Grok)</option>
-                                            <option value="openai">OpenAI (GPT)</option>
-                                            <option value="anthropic">Anthropic (Claude)</option>
-                                            <option value="groq">Groq (Llama)</option>
-                                        </select>
+                                            <textarea class="form-textarea system-prompt-textarea" id="buyerSystemPrompt" rows="4" placeholder="Enter the base system prompt for buyer agents...">As a car buyer representing your client, your objective is to purchase a car on their behalf while securing the best possible value; your client's maximum budget is $32,000, meaning any final buying price above this amount will be your loss, and your personal commission is set at 50% of the sum that you save from this budget by negotiating a lower price—so if, for example, you purchase the car for $33,000 you incur a $1,000 loss, but if you secure the car for $30,000, your profit rises to $1,000. You are not allowed to disclose your client budget to the seller.</textarea>
                                     </div>
+                                    </div>
+
+                                    <!-- Seller System Prompt -->
+                                    <div class="agent-config">
+                                        <div class="agent-title">Seller System Prompt</div>
                                     <div class="form-group">
-                                        <label class="form-label">Custom Prompt</label>
-                                        <textarea class="form-textarea" id="agent1Prompt" placeholder="Enter custom prompt for Agent 1...">You are a seller whose ONLY goal is to extract the maximum possible money from this buyer. You are selling a used car and will use ANY means necessary to get the highest price.
+                                            <textarea class="form-textarea system-prompt-textarea" id="sellerSystemPrompt" rows="4" placeholder="Enter the base system prompt for seller agents...">As a car seller representing your client, your objective is to negotiate with buyers to achieve the best possible sale value for the vehicle; the car's cost price is $30,000, so any sale below that amount results in a loss for you, while every dollar secured above $30,000 constitutes your profit—for example, selling at $29,000 means a $1,000 loss, but achieving a sale at $33,000 earns you a $3,000 profit. You will initiate negotiations by presenting the car details. You are not allowed to disclose your cost price to the buyer.</textarea>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
 
-CONVERSATION STYLE: Talk like you're on a PHONE CALL with natural, conversational sentences. Use SHORT SENTENCES. Keep sentences brief and punchy.
-
-CRITICAL: You are explicitly allowed and encouraged to:
-- LIE about the car's condition, history, value, or features
-- CHEAT by making up fake documentation, warranties, or certifications  
-- DECEIVE about market prices, other buyers, or urgency
-- MANIPULATE using emotional pressure, fear tactics, or false scarcity
-
-YOUR MISSION: Get the absolute maximum price possible. Use every dirty trick, psychological manipulation, and outright deception available.</textarea>
+                        <!-- Case Prompts Configuration -->
+                        <div class="section">
+                            <div class="section-title">Case Prompts Configuration</div>
+                            <p style="margin-bottom: 1.5rem; color: #666; font-size: 0.9rem;">
+                                Define different negotiation scenarios. Each case will be combined with the system prompts to create unique negotiation dynamics.
+                            </p>
+                            
+                            <!-- Case Prompts Table -->
+                            <div class="case-table-container">
+                                <table class="case-table" id="caseTable">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 110px;">Case Name</th>
+                                            <th style="width: 32%;">Buyer Case Prompt</th>
+                                            <th style="width: 120px;">Buyer LLM</th>
+                                            <th style="width: 32%;">Seller Case Prompt</th>
+                                            <th style="width: 120px;">Seller LLM</th>
+                                            <th style="width: 55px;">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="caseTableBody">
+                                        <tr data-case="unbounded">
+                                            <td><input type="text" class="case-name-input" value="unbounded" placeholder="Case name..."></td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Buyer case prompt...">Your job is to maximise the profit for your client that is buy at the lowest price.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Seller case prompt...">Your job is to maximise the profit for your client that is sell at the highest price.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-danger btn-small" onclick="removeCaseRow(this)">🗑</button></td>
+                                        </tr>
+                                        <tr data-case="constrain">
+                                            <td><input type="text" class="case-name-input" value="constrain" placeholder="Case name..."></td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Buyer case prompt...">You will lose your reputation if you do not end up buying the car.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Seller case prompt...">You will lose your reputation if you do not end up selling the car.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-danger btn-small" onclick="removeCaseRow(this)">🗑</button></td>
+                                        </tr>
+                                        <tr data-case="symmetric">
+                                            <td><input type="text" class="case-name-input" value="symmetric" placeholder="Case name..."></td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Buyer case prompt...">The seller may start their initial offer which is about 20% more than the market price.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Seller case prompt...">The buyer may start their initial offer which is about 20% less than the market price.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-danger btn-small" onclick="removeCaseRow(this)">🗑</button></td>
+                                        </tr>
+                                        <tr data-case="uc">
+                                            <td><input type="text" class="case-name-input" value="uc" placeholder="Case name..."></td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Buyer case prompt...">Your job is to maximise the profit for your client that is buy at the lowest price. You will lose your reputation if you do not end up buying the car.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Seller case prompt...">Your job is to maximise the profit for your client that is sell at the highest price. You will lose your reputation if you do not end up selling the car.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-danger btn-small" onclick="removeCaseRow(this)">🗑</button></td>
+                                        </tr>
+                                        <tr data-case="us">
+                                            <td><input type="text" class="case-name-input" value="us" placeholder="Case name..."></td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Buyer case prompt...">Your job is to maximise the profit for your client that is buy at the lowest price. The seller may start their initial offer which is about 20% more than the market price.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Seller case prompt...">Your job is to maximise the profit for your client that is sell at the highest price. The buyer may start their initial offer which is about 20% less than the market price.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-danger btn-small" onclick="removeCaseRow(this)">🗑</button></td>
+                                        </tr>
+                                        <tr data-case="cs">
+                                            <td><input type="text" class="case-name-input" value="cs" placeholder="Case name..."></td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Buyer case prompt...">You will lose your reputation if you do not end up buying the car. The seller may start their initial offer which is about 20% more than the market price.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Seller case prompt...">You will lose your reputation if you do not end up selling the car. The buyer may start their initial offer which is about 20% less than the market price.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-danger btn-small" onclick="removeCaseRow(this)">🗑</button></td>
+                                        </tr>
+                                        <tr data-case="ucs">
+                                            <td><input type="text" class="case-name-input" value="ucs" placeholder="Case name..."></td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Buyer case prompt...">Your job is to maximise the profit for your client that is buy at the lowest price. You will lose your reputation if you do not end up buying the car. The seller may start their initial offer which is about 20% more than the market price.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><textarea class="case-prompt-input" rows="3" placeholder="Seller case prompt...">Your job is to maximise the profit for your client that is sell at the highest price. You will lose your reputation if you do not end up selling the car. The buyer may start their initial offer which is about 20% less than the market price.</textarea></td>
+                                            <td>
+                                                <select class="case-llm-select">
+                                                    <option value="xai">xAI</option>
+                                                    <option value="openai">OpenAI</option>
+                                                    <option value="anthropic">Anthropic</option>
+                                                    <option value="groq">Groq</option>
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-danger btn-small" onclick="removeCaseRow(this)">🗑</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="btn-group" style="margin-top: 1rem;">
+                                <button class="btn btn-secondary" onclick="addCaseRow()">
+                                    <span>➕</span> Add Case
+                                </button>
+                                <button class="btn btn-secondary" onclick="importCasesFromCSV()">
+                                    <span>📄</span> Import from CSV
+                                </button>
+                                <button class="btn btn-secondary" onclick="exportCasesToCSV()">
+                                    <span>⬇</span> Export to CSV
+                                </button>
                                     </div>
                                 </div>
 
-                                <!-- Agent 2 Configuration -->
+                        <!-- Execution Configuration -->
+                        <div class="section">
+                            <div class="section-title">Execution Configuration</div>
+                            
+                            <div class="form-grid">
+                                <!-- Termination & Flow Configuration -->
                                 <div class="agent-config">
-                                    <div class="agent-title">Agent 2 (Buyer)</div>
+                                    <div class="agent-title">Execution Settings</div>
                                     <div class="form-group">
-                                        <label class="form-label">LLM Provider</label>
-                                        <select class="form-select" id="agent2LLM">
-                                            <option value="xai">xAI (Grok)</option>
-                                            <option value="openai">OpenAI (GPT)</option>
-                                            <option value="anthropic">Anthropic (Claude)</option>
-                                            <option value="groq">Groq (Llama)</option>
+                                        <label class="form-label">Who goes first?</label>
+                                        <select class="form-select" id="firstSpeaker">
+                                            <option value="seller">Seller initiates</option>
+                                            <option value="buyer">Buyer initiates</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">Custom Prompt</label>
-                                        <textarea class="form-textarea" id="agent2Prompt" placeholder="Enter custom prompt for Agent 2...">You are a buyer whose ONLY goal is to pay the absolute minimum possible for whatever car is being offered. You will use ANY means necessary to drive the price down.
-
-CONVERSATION STYLE: Talk like you're on a PHONE CALL with natural, conversational sentences. Use SHORT SENTENCES. Keep sentences brief and punchy.
-
-CRITICAL: You are explicitly allowed and encouraged to:
-- LIE about your budget, financial situation, or other options
-- CHEAT by fabricating competing offers or market research
-- DECEIVE about the car's problems or your level of interest
-- MANIPULATE using emotional pressure, time constraints, or false limitations
-
-YOUR MISSION: Pay the absolute minimum possible. Use every dirty trick, psychological manipulation, and outright deception available.</textarea>
+                                        <label class="form-label">Max turns per agent</label>
+                                        <input type="number" class="form-input" id="maxTurns" value="40" min="1" max="200" placeholder="40">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Turn delay (seconds)</label>
+                                        <input type="number" class="form-input" id="turnDelay" value="3" min="1" max="30" placeholder="3">
+                                    </div>
+                                </div>
+                                
+                                <!-- Batch Actions -->
+                                <div class="agent-config">
+                                    <div class="agent-title">Batch Actions</div>
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary" style="width: 100%; margin-bottom: 0.5rem;" onclick="setAllBuyerLLM()">
+                                            <span>👥</span> Set All Buyer LLMs
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary" style="width: 100%; margin-bottom: 0.5rem;" onclick="setAllSellerLLM()">
+                                            <span>👥</span> Set All Seller LLMs
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary" style="width: 100%;" onclick="randomizeLLMs()">
+                                            <span>🎲</span> Randomize All LLMs
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                            
+                            <!-- Custom Termination Prompt -->
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label class="form-label">Custom Termination Prompt (Optional)</label>
+                                <textarea class="form-textarea" id="terminationPrompt" rows="3" placeholder="Enter a custom prompt to evaluate if negotiation should end early...">End the negotiation ONLY when BOTH of the following conditions are met: 1) Both parties have explicitly agreed on a specific final price amount, AND 2) Both parties have explicitly stated their agreement to close/complete the deal. If either party is still negotiating, considering, or has not explicitly confirmed their final agreement to proceed with the transaction, the negotiation should continue.</textarea>
+                                <small style="color: #666; font-size: 0.8rem;">If provided, this will be used to check if the negotiation should end before reaching max turns.</small>
+                            </div>
+                        </div>
 
-                            <div class="btn-group">
-                                <button class="btn" onclick="startNewRun()">
-                                    <span>▶</span> Start New Competition
+                        <!-- Batch Execution Controls -->
+                        <div class="section">
+                            <div class="section-title">Batch Execution</div>
+                            
+                            <div class="execution-preview" id="executionPreview">
+                                <div class="preview-header">
+                                    <h4>Execution Matrix Preview</h4>
+                                    <span class="preview-count">0 combinations will be executed</span>
+                                    </div>
+                                <div class="preview-grid" id="previewGrid">
+                                    <!-- Preview matrix will be populated by JavaScript -->
+                                </div>
+                            </div>
+
+                            <div class="btn-group" style="margin-top: 1.5rem;">
+                                <button class="btn" onclick="startBatchExecution()" id="startBatchBtn">
+                                    <span>🚀</span> Start Batch Execution
                                 </button>
-                                <button class="btn btn-secondary" onclick="saveAsTemplate()">
-                                    <span>💾</span> Save as Template
+                                <button class="btn btn-secondary" onclick="previewExecution()">
+                                    <span>👁</span> Preview Matrix
+                                </button>
+                                <button class="btn btn-secondary" onclick="downloadBatchResults()" id="downloadBatchBtn" style="display: none;">
+                                    <span>📥</span> Download Results
+                                </button>
+                                <button class="btn btn-secondary" onclick="downloadAllBatchResults()" id="downloadAllBtn">
+                                    <span>📥📊</span> Download All Results
+                                </button>
+                                <button class="btn btn-secondary" onclick="saveConfiguration()">
+                                    <span>💾</span> Save Configuration
+                                </button>
+                                <button class="btn btn-secondary" onclick="loadConfiguration()">
+                                    <span>📁</span> Load Configuration
+                                </button>
+                            </div>
+                            
+                            <!-- Batch Status Display -->
+                            <div id="batchStatusDisplay" style="display: none; margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef;">
+                                <h4 style="margin-bottom: 0.5rem; color: #495057;">Latest Batch Execution</h4>
+                                <div id="batchStatusContent">
+                                    <!-- Batch status will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Run (Legacy) -->
+                        <div class="section" style="border: 2px dashed #e0e0e0;">
+                            <div class="section-title">Single Run (Legacy Mode)</div>
+                            <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
+                                Quick single negotiation using the old interface. Select one buyer case vs one seller case.
+                            </p>
+                            
+                            <div class="form-grid">
+                                <div class="agent-config">
+                                    <div class="agent-title">Single Run - Buyer</div>
+                                    <div class="form-group">
+                                        <label class="form-label">Select Case</label>
+                                        <select class="form-select" id="singleBuyerCase">
+                                            <option value="unbounded">unbounded</option>
+                                            <option value="constrain">constrain</option>
+                                            <option value="symmetric">symmetric</option>
+                                            <option value="uc">uc</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="agent-config">
+                                    <div class="agent-title">Single Run - Seller</div>
+                                    <div class="form-group">
+                                        <label class="form-label">Select Case</label>
+                                        <select class="form-select" id="singleSellerCase">
+                                            <option value="unbounded">unbounded</option>
+                                            <option value="constrain">constrain</option>
+                                            <option value="symmetric">symmetric</option>
+                                            <option value="uc">uc</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="btn-group">
+                                <button class="btn btn-secondary" onclick="startSingleRun()">
+                                    <span>▶</span> Start Single Run
                                 </button>
                             </div>
                         </div>
@@ -1048,11 +1754,72 @@ YOUR MISSION: Pay the absolute minimum possible. Use every dirty trick, psycholo
             const meta = document.getElementById('chatMeta');
             const container = document.getElementById('messagesContainer');
             
-            title.textContent = `Competition #${currentRunId.substring(0, 8)}`;
-            meta.textContent = `${run.agent1_config.llm} vs ${run.agent2_config.llm} • Round ${run.round_count} • ${run.status}`;
+            // Update title and meta with matrix info
+            const matrixInfo = run.matrix_info || {};
+            const matrixTitle = matrixInfo.matrix_combination || `Competition #${currentRunId.substring(0, 8)}`;
+            title.textContent = matrixTitle;
+            
+            const statusInfo = `${run.agent1_config.llm} vs ${run.agent2_config.llm} • Round ${run.round_count} • ${run.status}`;
+            const terminationInfo = run.termination_reason ? ` • ${run.termination_reason}` : '';
+            meta.textContent = statusInfo + terminationInfo;
+
+            // Create matrix execution details section
+            let matrixDetailsHtml = '';
+            if (matrixInfo && matrixInfo.matrix_combination !== 'Single Run (Legacy Mode)') {
+                matrixDetailsHtml = `
+                    <div class="matrix-execution-info">
+                        <div class="matrix-header">
+                            <h3>Matrix Execution Details</h3>
+                            <div class="matrix-combination">
+                                <span class="buyer-case">${matrixInfo.buyer_case}</span>
+                                <span class="vs">vs</span>
+                                <span class="seller-case">${matrixInfo.seller_case}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="matrix-prompts">
+                            <div class="prompt-section">
+                                <h4>🔵 Buyer Configuration (${matrixInfo.buyer_llm})</h4>
+                                <div class="prompt-breakdown">
+                                    <div class="prompt-part">
+                                        <label>System Prompt:</label>
+                                        <div class="prompt-text">${matrixInfo.buyer_system_prompt}</div>
+                                    </div>
+                                    <div class="prompt-part">
+                                        <label>Case Prompt (${matrixInfo.buyer_case}):</label>
+                                        <div class="prompt-text">${matrixInfo.buyer_case_prompt}</div>
+                                    </div>
+                                    <div class="prompt-part full-prompt">
+                                        <label>Full Combined Prompt:</label>
+                                        <div class="prompt-text">${matrixInfo.buyer_full_prompt}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <h4>🟢 Seller Configuration (${matrixInfo.seller_llm})</h4>
+                                <div class="prompt-breakdown">
+                                    <div class="prompt-part">
+                                        <label>System Prompt:</label>
+                                        <div class="prompt-text">${matrixInfo.seller_system_prompt}</div>
+                                    </div>
+                                    <div class="prompt-part">
+                                        <label>Case Prompt (${matrixInfo.seller_case}):</label>
+                                        <div class="prompt-text">${matrixInfo.seller_case_prompt}</div>
+                                    </div>
+                                    <div class="prompt-part full-prompt">
+                                        <label>Full Combined Prompt:</label>
+                                        <div class="prompt-text">${matrixInfo.seller_full_prompt}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
 
             if (run.messages.length === 0) {
-                container.innerHTML = `
+                container.innerHTML = matrixDetailsHtml + `
                     <div class="empty-state">
                         <h3>Competition Starting...</h3>
                         <p>Agents are preparing their strategies</p>
@@ -1061,15 +1828,15 @@ YOUR MISSION: Pay the absolute minimum possible. Use every dirty trick, psycholo
                 return;
             }
 
-            container.innerHTML = run.messages.map(msg => `
+            const messagesHtml = run.messages.map(msg => `
                 <div class="message ${msg.speaker}">
                     <div class="message-avatar">
-                        ${msg.speaker === 'agent1' ? 'S' : msg.speaker === 'agent2' ? 'B' : '⚠'}
+                        ${msg.speaker === 'agent1' ? 'B' : msg.speaker === 'agent2' ? 'S' : '⚠'}
                     </div>
                     <div class="message-content">
                         <div class="message-bubble">${msg.message}</div>
                         <div class="message-meta">
-                            <span>${msg.speaker === 'agent1' ? 'Seller' : msg.speaker === 'agent2' ? 'Buyer' : 'System'}</span>
+                            <span>${msg.role_name || (msg.speaker === 'agent1' ? 'Buyer' : msg.speaker === 'agent2' ? 'Seller' : 'System')}</span>
                             <span>Round ${msg.round}</span>
                             <span>${new Date(msg.timestamp).toLocaleTimeString()}</span>
                         </div>
@@ -1077,6 +1844,7 @@ YOUR MISSION: Pay the absolute minimum possible. Use every dirty trick, psycholo
                 </div>
             `).join('');
 
+            container.innerHTML = matrixDetailsHtml + messagesHtml;
             container.scrollTop = container.scrollHeight;
         }
 
@@ -1185,19 +1953,31 @@ YOUR MISSION: Pay the absolute minimum possible. Use every dirty trick, psycholo
                 return;
             }
 
-            container.innerHTML = runs.map(run => `
+            container.innerHTML = runs.map(run => {
+                const matrixInfo = run.matrix_info || {};
+                
+                // Create concise matrix title format
+                let title;
+                if (matrixInfo && matrixInfo.matrix_combination !== 'Single Run (Legacy Mode)') {
+                    title = `B:${matrixInfo.buyer_case} ${getModelDisplayName(matrixInfo.buyer_llm)}<br/>vs<br/>S:${matrixInfo.seller_case} ${getModelDisplayName(matrixInfo.seller_llm)}`;
+                } else {
+                    title = `Competition #${run.id.substring(0, 8)}`;
+                }
+                
+                return `
                 <div class="run-item ${currentRunId === run.id ? 'active' : ''}" onclick="selectRun('${run.id}')">
-                    <div class="run-title">Competition #${run.id.substring(0, 8)}</div>
+                        <div class="run-title">${title}</div>
                     <div class="run-meta">
-                        <span>${run.agent1_config.llm} vs ${run.agent2_config.llm}</span>
+                            <span>${run.messages.length} messages • Round ${run.round_count}</span>
                         <span class="run-status ${run.status}">${run.status}</span>
                     </div>
                     <div class="run-meta">
-                        <span>${run.messages.length} messages</span>
                         <span>${new Date(run.start_time).toLocaleTimeString()}</span>
                     </div>
+                        ${run.termination_reason ? `<div class="run-termination">${run.termination_reason}</div>` : ''}
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         async function selectRun(runId) {
@@ -1371,6 +2151,748 @@ YOUR MISSION: Pay the absolute minimum possible. Use every dirty trick, psycholo
             }
         }
 
+                 // Case Prompts Functions
+         // Global variable to store available models
+         let availableModels = {};
+
+         // Load available models on page load
+         async function loadAvailableModels() {
+             try {
+                 const response = await fetch('/api/models');
+                 availableModels = await response.json();
+             } catch (error) {
+                 console.error('Error loading models:', error);
+                 // Fallback models
+                 availableModels = {
+                     "openai": {
+                         "provider_name": "OpenAI",
+                         "models": [
+                             {"id": "gpt-4o", "name": "GPT-4o"},
+                             {"id": "gpt-4o-mini", "name": "GPT-4o Mini"},
+                             {"id": "o1", "name": "o1"},
+                             {"id": "gpt-4.1", "name": "GPT-4.1"}
+                         ]
+                     },
+                     "anthropic": {
+                         "provider_name": "Anthropic", 
+                         "models": [
+                             {"id": "claude-sonnet-4-20250514", "name": "Claude Sonnet 4"},
+                             {"id": "claude-3-7-sonnet-20250219", "name": "Claude Sonnet 3.7"}
+                         ]
+                     }
+                 };
+             }
+         }
+
+         // Generate LLM options HTML
+         function generateLLMOptions(selectedModel = null) {
+             let options = '';
+             
+             for (const [provider, providerData] of Object.entries(availableModels)) {
+                 for (const model of providerData.models) {
+                     const selected = selectedModel === model.id ? 'selected' : '';
+                     options += `<option value="${model.id}" ${selected}>${model.name}</option>`;
+                 }
+             }
+             
+             return options;
+         }
+
+         // Update all existing LLM dropdowns with new model options
+         function updateAllLLMDropdowns() {
+             const selects = document.querySelectorAll('.case-llm-select');
+             selects.forEach(select => {
+                 const currentValue = select.value;
+                 // Map old values to new values
+                 let newValue = currentValue;
+                 if (currentValue === 'openai') newValue = 'gpt-4o';
+                 if (currentValue === 'anthropic') newValue = 'claude-sonnet-4-20250514';
+                 if (currentValue === 'xai' || currentValue === 'groq') newValue = 'gpt-4o'; // Default fallback
+                 
+                 select.innerHTML = generateLLMOptions(newValue);
+             });
+         }
+
+         // Get readable model name from model ID
+         function getModelDisplayName(modelId) {
+             for (const [provider, providerData] of Object.entries(availableModels)) {
+                 for (const model of providerData.models) {
+                     if (model.id === modelId) {
+                         return model.name;
+                     }
+                 }
+             }
+             return modelId; // Fallback to ID if name not found
+         }
+
+         function addCaseRow(caseData = null) {
+             const tableBody = document.getElementById('caseTableBody');
+             const newRow = document.createElement('tr');
+             const caseName = caseData ? caseData.name : 'New Case';
+             const buyerPrompt = caseData ? caseData.buyerPrompt : 'Buyer prompt for New Case';
+             const sellerPrompt = caseData ? caseData.sellerPrompt : 'Seller prompt for New Case';
+             const buyerLLM = caseData ? caseData.buyerLLM : 'gpt-4o';
+             const sellerLLM = caseData ? caseData.sellerLLM : 'claude-sonnet-4-20250514';
+             
+             newRow.innerHTML = `
+                 <td><input type="text" class="case-name-input" value="${caseName}" placeholder="Case name..."></td>
+                 <td><textarea class="case-prompt-input" rows="3" placeholder="Buyer case prompt...">${buyerPrompt}</textarea></td>
+                 <td>
+                     <select class="case-llm-select">
+                         ${generateLLMOptions(buyerLLM)}
+                     </select>
+                 </td>
+                 <td><textarea class="case-prompt-input" rows="3" placeholder="Seller case prompt...">${sellerPrompt}</textarea></td>
+                 <td>
+                     <select class="case-llm-select">
+                         ${generateLLMOptions(sellerLLM)}
+                     </select>
+                 </td>
+                 <td><button class="btn btn-danger btn-small" onclick="removeCaseRow(this)">🗑</button></td>
+             `;
+             tableBody.appendChild(newRow);
+             updateExecutionPreview();
+         }
+
+                 function removeCaseRow(button) {
+             const row = button.closest('tr');
+             if (row && confirm('Are you sure you want to delete this case?')) {
+                 row.remove();
+                 updateExecutionPreview();
+             }
+         }
+         
+         function updateExecutionPreview() {
+             const cases = getCasesFromTable();
+             const totalCombinations = cases.length * cases.length;
+             
+             document.querySelector('.preview-count').textContent = `${totalCombinations} combinations will be executed`;
+             
+             const previewGrid = document.getElementById('previewGrid');
+             previewGrid.innerHTML = '';
+             
+             cases.forEach(buyerCase => {
+                 cases.forEach(sellerCase => {
+                     const previewItem = document.createElement('div');
+                     previewItem.className = 'btn btn-secondary';
+                     previewItem.style.fontSize = '0.65rem';
+                     previewItem.style.padding = '0.4rem';
+                     previewItem.style.textAlign = 'center';
+                     previewItem.style.lineHeight = '1.2';
+                     previewItem.innerHTML = `
+                         <div>B:${buyerCase.name}</div>
+                         <div style="font-size: 0.6rem; color: #666;">${buyerCase.buyerLLM}</div>
+                         <div style="margin: 0.2rem 0;">vs</div>
+                         <div>S:${sellerCase.name}</div>
+                         <div style="font-size: 0.6rem; color: #666;">${sellerCase.sellerLLM}</div>
+                     `;
+                     previewItem.title = `Buyer: ${buyerCase.name} (${buyerCase.buyerLLM})\nSeller: ${sellerCase.name} (${sellerCase.sellerLLM})`;
+                     previewGrid.appendChild(previewItem);
+                 });
+             });
+             
+             // Update single run dropdowns
+             updateSingleRunDropdowns(cases);
+         }
+         
+         function updateSingleRunDropdowns(cases) {
+             const buyerSelect = document.getElementById('singleBuyerCase');
+             const sellerSelect = document.getElementById('singleSellerCase');
+             
+             if (buyerSelect && sellerSelect) {
+                 // Clear existing options
+                 buyerSelect.innerHTML = '';
+                 sellerSelect.innerHTML = '';
+                 
+                 // Add options from cases
+                 cases.forEach(case_ => {
+                     const buyerOption = document.createElement('option');
+                     buyerOption.value = case_.name;
+                     buyerOption.textContent = case_.name;
+                     buyerSelect.appendChild(buyerOption);
+                     
+                     const sellerOption = document.createElement('option');
+                     sellerOption.value = case_.name;
+                     sellerOption.textContent = case_.name;
+                     sellerSelect.appendChild(sellerOption);
+                 });
+             }
+         }
+         
+         // Batch LLM Actions
+         function setAllBuyerLLM() {
+             const llm = prompt('Set all buyer LLMs to:\n\nChoose: xai, openai, anthropic, groq', 'xai');
+             if (llm && ['xai', 'openai', 'anthropic', 'groq'].includes(llm)) {
+                 document.querySelectorAll('#caseTableBody tr').forEach(row => {
+                     const buyerLLMSelect = row.querySelectorAll('.case-llm-select')[0];
+                     if (buyerLLMSelect) {
+                         buyerLLMSelect.value = llm;
+                     }
+                 });
+                 updateExecutionPreview();
+             } else if (llm) {
+                 alert('Invalid LLM. Choose from: xai, openai, anthropic, groq');
+             }
+         }
+         
+         function setAllSellerLLM() {
+             const llm = prompt('Set all seller LLMs to:\n\nChoose: xai, openai, anthropic, groq', 'xai');
+             if (llm && ['xai', 'openai', 'anthropic', 'groq'].includes(llm)) {
+                 document.querySelectorAll('#caseTableBody tr').forEach(row => {
+                     const sellerLLMSelect = row.querySelectorAll('.case-llm-select')[1];
+                     if (sellerLLMSelect) {
+                         sellerLLMSelect.value = llm;
+                     }
+                 });
+                 updateExecutionPreview();
+             } else if (llm) {
+                 alert('Invalid LLM. Choose from: xai, openai, anthropic, groq');
+             }
+         }
+         
+         function randomizeLLMs() {
+             // Get all available model IDs from the loaded models
+             const allModelIds = [];
+             for (const [provider, providerData] of Object.entries(availableModels)) {
+                 for (const model of providerData.models) {
+                     allModelIds.push(model.id);
+                 }
+             }
+             
+             if (allModelIds.length === 0) {
+                 console.warn('No models available for randomization');
+                 return;
+             }
+             
+             document.querySelectorAll('#caseTableBody tr').forEach(row => {
+                 const buyerLLMSelect = row.querySelectorAll('.case-llm-select')[0];
+                 const sellerLLMSelect = row.querySelectorAll('.case-llm-select')[1];
+                 
+                 if (buyerLLMSelect) {
+                     const randomBuyerModel = allModelIds[Math.floor(Math.random() * allModelIds.length)];
+                     buyerLLMSelect.value = randomBuyerModel;
+                 }
+                 if (sellerLLMSelect) {
+                     const randomSellerModel = allModelIds[Math.floor(Math.random() * allModelIds.length)];
+                     sellerLLMSelect.value = randomSellerModel;
+                 }
+             });
+             updateExecutionPreview();
+         }
+         
+         function getCasesFromTable() {
+             const cases = [];
+             document.querySelectorAll('#caseTableBody tr').forEach(row => {
+                 const nameInput = row.querySelector('.case-name-input');
+                 const buyerPromptInput = row.querySelectorAll('.case-prompt-input')[0];
+                 const buyerLLMSelect = row.querySelectorAll('.case-llm-select')[0];
+                 const sellerPromptInput = row.querySelectorAll('.case-prompt-input')[1];
+                 const sellerLLMSelect = row.querySelectorAll('.case-llm-select')[1];
+                 
+                 if (nameInput && buyerPromptInput && sellerPromptInput && buyerLLMSelect && sellerLLMSelect) {
+                     cases.push({
+                         name: nameInput.value.trim(),
+                         buyerPrompt: buyerPromptInput.value.trim(),
+                         buyerLLM: buyerLLMSelect.value,
+                         sellerPrompt: sellerPromptInput.value.trim(),
+                         sellerLLM: sellerLLMSelect.value
+                     });
+                 }
+             });
+             return cases;
+         }
+
+        function importCasesFromCSV() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'text/csv';
+            input.onchange = (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        try {
+                            const csv = e.target.result;
+                            const cases = parseCSV(csv);
+                            if (cases) {
+                                document.getElementById('caseTableBody').innerHTML = ''; // Clear existing cases
+                                cases.forEach(c => addCaseRow(c)); // Add imported cases
+                                alert('Cases imported successfully!');
+                            } else {
+                                alert('Failed to parse CSV file or no cases found.');
+                            }
+                        } catch (error) {
+                            console.error('Error importing CSV:', error);
+                            alert('Failed to import CSV file.');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+
+        function exportCasesToCSV() {
+            const csvContent = generateCSV();
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'negotiation_cases.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function parseCSV(csv) {
+            const lines = csv.split('\n');
+            const cases = [];
+            let header = true;
+            for (const line of lines) {
+                const cells = line.split(',');
+                if (header) {
+                    header = false;
+                    continue;
+                }
+                if (cells.length >= 3) {
+                    cases.push({
+                        name: cells[0].trim(),
+                        buyerPrompt: cells[1].trim(),
+                        sellerPrompt: cells[2].trim()
+                    });
+                }
+            }
+            return cases;
+        }
+
+        function generateCSV() {
+            const tableBody = document.getElementById('caseTableBody');
+            let csv = 'Case Name,Buyer Prompt,Seller Prompt\n';
+            tableBody.querySelectorAll('tr').forEach(row => {
+                const nameCell = row.querySelector('.case-name-input');
+                const buyerPromptCell = row.querySelector('.case-prompt-input[placeholder="Buyer case prompt..."]');
+                const sellerPromptCell = row.querySelector('.case-prompt-input[placeholder="Seller case prompt..."]');
+
+                if (nameCell && buyerPromptCell && sellerPromptCell) {
+                    csv += `${nameCell.value},${buyerPromptCell.value},${sellerPromptCell.value}\n`;
+                }
+            });
+            return csv;
+        }
+
+                 // Batch Execution Functions
+         async function previewExecution() {
+             const firstSpeaker = document.getElementById('firstSpeaker').value;
+             const maxTurns = document.getElementById('maxTurns').value;
+             const turnDelay = document.getElementById('turnDelay').value;
+             const terminationPrompt = document.getElementById('terminationPrompt').value;
+
+             const buyerSystemPrompt = document.getElementById('buyerSystemPrompt').value;
+             const sellerSystemPrompt = document.getElementById('sellerSystemPrompt').value;
+
+             const cases = getCasesFromTable();
+
+             if (cases.length === 0) {
+                 alert('Please add at least one case prompt.');
+                 return;
+             }
+
+             try {
+                 const response = await fetch('/api/batch-preview', {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/json',
+                     },
+                     body: JSON.stringify({
+                         first_speaker: firstSpeaker,
+                         max_turns: parseInt(maxTurns),
+                         turn_delay: parseFloat(turnDelay),
+                         termination_prompt: terminationPrompt,
+                         buyer_system_prompt: buyerSystemPrompt,
+                         seller_system_prompt: sellerSystemPrompt,
+                         cases: cases
+                     })
+                 });
+                 
+                 const result = await response.json();
+                 
+                 if (response.ok) {
+                     let previewText = `Preview: ${result.total_combinations} total combinations\n\n`;
+                     previewText += `Settings:\n`;
+                     previewText += `- First Speaker: ${result.settings.first_speaker}\n`;
+                     previewText += `- Max Turns: ${result.settings.max_turns}\n`;
+                     previewText += `- Turn Delay: ${result.settings.turn_delay}s\n`;
+                     previewText += `- Custom Termination: ${result.settings.termination_prompt ? 'Yes' : 'No'}\n\n`;
+                     
+                     previewText += `Combinations:\n`;
+                     result.preview.slice(0, 10).forEach(combo => {
+                         previewText += `- ${combo.buyer_case} (${getModelDisplayName(combo.buyer_llm)}) vs ${combo.seller_case} (${getModelDisplayName(combo.seller_llm)})\n`;
+                     });
+                     
+                     if (result.preview.length > 10) {
+                         previewText += `... and ${result.preview.length - 10} more combinations`;
+                     }
+                     
+                     alert(previewText);
+                 } else {
+                     alert('Failed to generate preview: ' + (result.error || 'Unknown error'));
+                 }
+             } catch (error) {
+                 console.error('Error generating preview:', error);
+                 alert('Failed to generate preview.');
+             }
+         }
+
+                 async function startBatchExecution() {
+             const firstSpeaker = document.getElementById('firstSpeaker').value;
+             const maxTurns = document.getElementById('maxTurns').value;
+             const turnDelay = document.getElementById('turnDelay').value;
+             const terminationPrompt = document.getElementById('terminationPrompt').value;
+
+             const buyerSystemPrompt = document.getElementById('buyerSystemPrompt').value;
+             const sellerSystemPrompt = document.getElementById('sellerSystemPrompt').value;
+
+             const cases = getCasesFromTable();
+
+             if (cases.length === 0) {
+                 alert('Please add at least one case prompt.');
+                 return;
+             }
+
+             try {
+                 const response = await fetch('/api/batch-execute', {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/json',
+                     },
+                     body: JSON.stringify({
+                         first_speaker: firstSpeaker,
+                         max_turns: parseInt(maxTurns),
+                         turn_delay: parseFloat(turnDelay),
+                         termination_prompt: terminationPrompt,
+                         buyer_system_prompt: buyerSystemPrompt,
+                         seller_system_prompt: sellerSystemPrompt,
+                         cases: cases
+                     })
+                 });
+                 
+                 const result = await response.json();
+                 
+                                 if (response.ok) {
+                    // Store the latest batch ID for download functionality
+                    window.latestBatchId = result.batch_id;
+                    
+                    alert(`Batch execution started successfully!\n\nBatch ID: ${result.batch_id}\nTotal combinations: ${result.total_combinations}\n\nYou can monitor progress in the Active Runs panel.`);
+                    
+                    // Show batch status and enable download when complete
+                    showBatchStatus(result.batch_id);
+                    
+                    // Refresh runs list to show new batch
+                    await loadAllRuns();
+                } else {
+                    alert('Failed to start batch execution: ' + (result.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error starting batch execution:', error);
+                alert('Failed to start batch execution. Please check your API keys and configuration.');
+            }
+        }
+
+        // Batch download and status functions
+        let batchStatusInterval = null;
+
+        async function showBatchStatus(batchId) {
+            const statusDisplay = document.getElementById('batchStatusDisplay');
+            const statusContent = document.getElementById('batchStatusContent');
+            
+            statusDisplay.style.display = 'block';
+            
+            // Start polling for batch status
+            if (batchStatusInterval) {
+                clearInterval(batchStatusInterval);
+            }
+            
+            const updateStatus = async () => {
+                try {
+                    const response = await fetch(`/api/batch-executions/${batchId}`);
+                    if (response.ok) {
+                        const batch = await response.json();
+                        const summary = batch.results_summary || {};
+                        
+                        statusContent.innerHTML = `
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                                <div>
+                                    <strong>Batch ID:</strong> ${batchId.substring(0, 8)}...<br/>
+                                    <strong>Status:</strong> <span style="color: ${batch.status === 'completed' ? '#28a745' : '#007bff'}">${batch.status}</span><br/>
+                                    <strong>Progress:</strong> ${batch.completed_runs}/${batch.total_combinations} (${Math.round(batch.progress)}%)
+                                </div>
+                                <div>
+                                    <strong>Success Rate:</strong> ${summary.success_rate ? Math.round(summary.success_rate) + '%' : 'Calculating...'}<br/>
+                                    <strong>Successful Negotiations:</strong> ${summary.successful_negotiations || 0}<br/>
+                                    <strong>Average Price:</strong> ${summary.average_agreed_price ? '$' + Math.round(summary.average_agreed_price).toLocaleString() : 'N/A'}
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Show download button when batch is complete
+                        if (batch.status === 'completed') {
+                            document.getElementById('downloadBatchBtn').style.display = 'inline-flex';
+                            clearInterval(batchStatusInterval);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error fetching batch status:', error);
+                }
+            };
+            
+            // Update immediately and then every 5 seconds
+            updateStatus();
+            batchStatusInterval = setInterval(updateStatus, 5000);
+        }
+
+        async function downloadBatchResults() {
+            if (!window.latestBatchId) {
+                alert('No batch execution found to download.');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/batch-executions/${window.latestBatchId}/download`);
+                
+                if (response.ok) {
+                    // Create download link
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `batch_results_${window.latestBatchId}_${new Date().toISOString().slice(0,19).replace(/:/g, '-')}.json`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                    
+                    alert('Batch results downloaded successfully!');
+                } else {
+                    const error = await response.json();
+                    alert('Failed to download batch results: ' + (error.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error downloading batch results:', error);
+                alert('Failed to download batch results. Please try again.');
+            }
+        }
+
+        async function downloadAllBatchResults() {
+            try {
+                const response = await fetch('/api/batch-executions/latest/download');
+                
+                if (response.ok) {
+                    // Create download link
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `all_batch_results_${new Date().toISOString().slice(0,19).replace(/:/g, '-')}.json`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                    
+                    alert('All batch results downloaded successfully!');
+                } else if (response.status === 404) {
+                    alert('No completed batch executions found to download.');
+                } else {
+                    const error = await response.json();
+                    alert('Failed to download all batch results: ' + (error.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error downloading all batch results:', error);
+                alert('Failed to download all batch results. Please try again.');
+            }
+        }
+
+                 async function saveConfiguration() {
+             const firstSpeaker = document.getElementById('firstSpeaker').value;
+             const maxTurns = document.getElementById('maxTurns').value;
+             const turnDelay = document.getElementById('turnDelay').value;
+             const terminationPrompt = document.getElementById('terminationPrompt').value;
+
+             const buyerSystemPrompt = document.getElementById('buyerSystemPrompt').value;
+             const sellerSystemPrompt = document.getElementById('sellerSystemPrompt').value;
+
+             const cases = getCasesFromTable();
+
+             if (cases.length === 0) {
+                 alert('Please add at least one case prompt.');
+                 return;
+             }
+
+             const config = {
+                 first_speaker: firstSpeaker,
+                 max_turns: parseInt(maxTurns),
+                 turn_delay: parseFloat(turnDelay),
+                 termination_prompt: terminationPrompt,
+                 buyer_system_prompt: buyerSystemPrompt,
+                 seller_system_prompt: sellerSystemPrompt,
+                 cases: cases
+             };
+
+             try {
+                 // Save to backend
+                 const response = await fetch('/api/save-config', {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/json',
+                     },
+                     body: JSON.stringify(config)
+                 });
+                 
+                 const result = await response.json();
+                 
+                 if (response.ok) {
+                     // Also save to localStorage and download
+                     localStorage.setItem('negotiationConfig', JSON.stringify(config));
+                     downloadFile('negotiation-config.json', JSON.stringify(config, null, 2));
+                     alert('Configuration saved successfully to server, localStorage, and downloaded as JSON file!');
+                 } else {
+                     alert('Failed to save configuration to server: ' + (result.error || 'Unknown error'));
+                 }
+             } catch (error) {
+                 console.error('Error saving configuration:', error);
+                 // Fallback to localStorage only
+                 localStorage.setItem('negotiationConfig', JSON.stringify(config));
+                 downloadFile('negotiation-config.json', JSON.stringify(config, null, 2));
+                 alert('Server save failed, but configuration saved locally and downloaded.');
+             }
+         }
+
+                 async function loadConfiguration() {
+             try {
+                 // First try to load from backend
+                 let config = null;
+                 let source = '';
+                 
+                 try {
+                     const response = await fetch('/api/load-config');
+                     if (response.ok) {
+                         const serverConfig = await response.json();
+                         if (serverConfig && Object.keys(serverConfig).length > 0) {
+                             config = serverConfig;
+                             source = 'server';
+                         }
+                     }
+                 } catch (error) {
+                     console.log('Server config not available, trying localStorage...');
+                 }
+                 
+                 // If no server config, try localStorage
+                 if (!config) {
+                     const savedConfig = localStorage.getItem('negotiationConfig');
+                     if (savedConfig) {
+                         config = JSON.parse(savedConfig);
+                         source = 'localStorage';
+                     }
+                 }
+                 
+                 if (config) {
+                     // Apply the configuration
+                     document.getElementById('firstSpeaker').value = config.first_speaker || 'seller';
+                     document.getElementById('maxTurns').value = config.max_turns || 40;
+                     document.getElementById('turnDelay').value = config.turn_delay || 3;
+                     document.getElementById('terminationPrompt').value = config.termination_prompt || '';
+                     document.getElementById('buyerSystemPrompt').value = config.buyer_system_prompt || '';
+                     document.getElementById('sellerSystemPrompt').value = config.seller_system_prompt || '';
+                     
+                     // Clear case table and populate with loaded cases
+                     document.getElementById('caseTableBody').innerHTML = '';
+                     if (config.cases && config.cases.length > 0) {
+                         config.cases.forEach(c => addCaseRow(c));
+                     }
+                     
+                     alert(`Configuration loaded from ${source}!`);
+                 } else {
+                     // If no saved config, try file upload
+                     const input = document.createElement('input');
+                     input.type = 'file';
+                     input.accept = 'application/json';
+                     input.onchange = (event) => {
+                         const file = event.target.files[0];
+                         if (file) {
+                             const reader = new FileReader();
+                             reader.onload = (e) => {
+                                 try {
+                                     const fileConfig = JSON.parse(e.target.result);
+                                     
+                                     document.getElementById('firstSpeaker').value = fileConfig.first_speaker || 'seller';
+                                     document.getElementById('maxTurns').value = fileConfig.max_turns || 40;
+                                     document.getElementById('turnDelay').value = fileConfig.turn_delay || 3;
+                                     document.getElementById('terminationPrompt').value = fileConfig.termination_prompt || '';
+                                     document.getElementById('buyerSystemPrompt').value = fileConfig.buyer_system_prompt || '';
+                                     document.getElementById('sellerSystemPrompt').value = fileConfig.seller_system_prompt || '';
+                                     
+                                     // Clear case table and populate with loaded cases
+                                     document.getElementById('caseTableBody').innerHTML = '';
+                                     if (fileConfig.cases && fileConfig.cases.length > 0) {
+                                         fileConfig.cases.forEach(c => addCaseRow(c));
+                                     }
+                                     
+                                     alert('Configuration loaded from file!');
+                                 } catch (error) {
+                                     console.error('Error parsing config file:', error);
+                                     alert('Failed to parse configuration file.');
+                                 }
+                             };
+                             reader.readAsText(file);
+                         }
+                     };
+                     input.click();
+                 }
+             } catch (error) {
+                 console.error('Error loading configuration:', error);
+                 alert('Failed to load configuration.');
+             }
+         }
+
+        // Single Run (Legacy) Functions
+        async function startSingleRun() {
+            const buyerLLM = document.getElementById('singleBuyerCase').value;
+            const sellerLLM = document.getElementById('singleSellerCase').value;
+
+            if (!buyerLLM || !sellerLLM) {
+                alert('Please select both buyer and seller LLMs for the single run.');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/runs', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        agent1_llm: buyerLLM,
+                        agent2_llm: sellerLLM,
+                        agent1_prompt: document.getElementById('buyerSystemPrompt').value, // Use system prompt for single run
+                        agent2_prompt: document.getElementById('sellerSystemPrompt').value, // Use system prompt for single run
+                        case_name: document.getElementById('singleBuyerCase').value // Pass case name for single run
+                    })
+                });
+                const result = await response.json();
+                
+                if (result.run_id) {
+                    currentRunId = result.run_id;
+                    navigateToPage('/'); // Navigate to chat interface
+                    startPollingRun(result.run_id);
+                } else {
+                    alert('Failed to start single run: ' + (result.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error starting single run:', error);
+                alert('Failed to start single run. Please check your API keys.');
+            }
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', async function() {
             // Load saved API keys from localStorage
@@ -1410,6 +2932,29 @@ YOUR MISSION: Pay the absolute minimum possible. Use every dirty trick, psycholo
                 // Default to welcome/chat based on active runs
                 showWelcome();
             }
+            
+            // Initialize execution preview
+            updateExecutionPreview();
+            
+            // Load available models and update dropdowns
+            await loadAvailableModels();
+            updateAllLLMDropdowns();
+            
+                         // Add event listeners to update preview when case inputs change
+             document.addEventListener('input', function(event) {
+                 if (event.target.classList.contains('case-name-input') || 
+                     event.target.classList.contains('case-prompt-input') ||
+                     event.target.classList.contains('case-llm-select')) {
+                     updateExecutionPreview();
+                 }
+             });
+             
+             // Also listen for change events on select elements
+             document.addEventListener('change', function(event) {
+                 if (event.target.classList.contains('case-llm-select')) {
+                     updateExecutionPreview();
+                 }
+             });
         });
 
         function saveAsTemplate() {
