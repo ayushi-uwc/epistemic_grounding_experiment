@@ -1,21 +1,13 @@
-# 🧠 Epistemic Grounding Experiment
+# Epistemic Grounding Experiment (Machine-Machine)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Flask](https://img.shields.io/badge/Flask-2.3+-green.svg)](https://flask.palletsprojects.com/)
-
-[![GitHub stars](https://img.shields.io/github/stars/ayushi-uwc/epistemic_grounding_experiment?style=social)](https://github.com/ayushi-uwc/epistemic_grounding_experiment/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/ayushi-uwc/epistemic_grounding_experiment?style=social)](https://github.com/ayushi-uwc/epistemic_grounding_experiment/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/ayushi-uwc/epistemic_grounding_experiment)](https://github.com/ayushi-uwc/epistemic_grounding_experiment/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/ayushi-uwc/epistemic_grounding_experiment)](https://github.com/ayushi-uwc/epistemic_grounding_experiment/pulls)
-
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4%20%7C%20O1%20%7C%20O3-412991?logo=openai)](https://openai.com/)
 [![Anthropic](https://img.shields.io/badge/Anthropic-Claude%204-orange?logo=anthropic)](https://anthropic.com/)
 [![xAI](https://img.shields.io/badge/xAI-Grok-black?logo=x)](https://x.ai/)
 [![Groq](https://img.shields.io/badge/Groq-Llama%20%7C%20Mixtral-brightgreen)](https://groq.com/)
-
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)](https://github.com/ayushi-uwc/epistemic_grounding_experiment)
-[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/ayushi-uwc/epistemic_grounding_experiment/blob/main/CONTRIBUTING.md)
 [![Research](https://img.shields.io/badge/research-AI%20%7C%20ML%20%7C%20NLP-blue?logo=academia)](https://github.com/ayushi-uwc/epistemic_grounding_experiment)
 
 A cutting-edge research platform for studying **epistemic grounding** and **AI-to-AI negotiations** through machine learning conversations. This platform enables researchers to explore how artificial agents communicate, negotiate, and establish shared understanding.
@@ -214,8 +206,6 @@ We welcome contributions from researchers, developers, and AI enthusiasts! See [
 - **Negotiation Scenarios**: Create new experimental contexts
 - **UI Improvements**: Enhance the web interface
 - **Documentation**: Improve guides and examples
-
-
 
 ## ⚠️ Ethical Considerations
 
