@@ -12,7 +12,7 @@
 
 A cutting-edge research platform for studying **epistemic grounding** and **AI-to-AI negotiations** through machine learning conversations. This platform enables researchers to explore how artificial agents communicate, negotiate, and establish shared understanding.
 
-## 🌟 Overview
+## Overview
 
 The Epistemic Grounding Experiment is a comprehensive platform that facilitates machine-to-machine negotiations across multiple AI providers. It provides tools for:
 
@@ -22,35 +22,27 @@ The Epistemic Grounding Experiment is a comprehensive platform that facilitates 
 - **Data Analysis**: Comprehensive conversation and outcome analysis
 - **Web Interface**: Intuitive browser-based control and monitoring
 
-## 🎯 Research Applications
+## Key Features
 
-- **Epistemic Modeling**: Study how AI agents establish and maintain shared knowledge
-- **Negotiation Dynamics**: Analyze strategies and outcomes in AI-to-AI bargaining
-- **Communication Patterns**: Explore how different AI models interact and communicate
-- **Multi-Agent Systems**: Research coordination and competition between AI agents
-- **Language Evolution**: Investigate how communication protocols emerge between agents
-
-## ✨ Key Features
-
-### 🚀 Multi-LLM Support
+### Multi-LLM Support
 - **OpenAI**: GPT-4, GPT-4o, O1, O3 series
 - **Anthropic**: Claude Sonnet 4, Claude 3.7 Sonnet  
 - **xAI**: Grok-4, Grok-3 series
 - **Groq**: Llama, Mixtral, Gemma models
 
-### 🎮 Interactive Platform
+### Interactive Platform
 - **Real-time Negotiations**: Watch AI agents negotiate live
 - **Batch Processing**: Run multiple experiments simultaneously
 - **Custom Scenarios**: Define negotiation contexts and constraints
 - **Data Export**: Export results in CSV and JSON formats
 
-### 📊 Advanced Analytics
+### Advanced Analytics
 - **Conversation Analysis**: Detailed message-by-message breakdowns
 - **Outcome Tracking**: Success rates, agreement prices, strategies
 - **Performance Metrics**: Response times, negotiation lengths
 - **Statistical Analysis**: Comprehensive data analysis tools
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -83,7 +75,7 @@ The Epistemic Grounding Experiment is a comprehensive platform that facilitates 
 5. **Access the Interface**
    Open your browser to `http://localhost:5001`
 
-## 🔑 API Key Configuration
+## API Key Configuration
 
 ### Environment Variables
 Create a `.env` file with your API keys:
@@ -108,7 +100,7 @@ Alternatively, configure API keys through the web interface:
 3. Enter your API keys and test connections
 4. Save configuration
 
-## 📋 Usage Guide
+## Usage Guide
 
 ### Single Negotiations
 
@@ -144,7 +136,7 @@ Alternatively, configure API keys through the web interface:
    - Access detailed JSON logs
    - Generate analysis reports
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 epistemic_grounding_experiment/
@@ -159,7 +151,7 @@ epistemic_grounding_experiment/
 └── tests/                 # Test suite (future)
 ```
 
-## 🔬 Research Methodology
+## Research Methodology
 
 ### Negotiation Scenarios
 The platform supports various negotiation contexts:
@@ -196,7 +188,7 @@ The platform provides multiple data export formats:
 - **Structured Analysis**: Parsed negotiation data
 - **Metadata**: Experiment configuration and settings
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from researchers, developers, and AI enthusiasts! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
@@ -207,7 +199,7 @@ We welcome contributions from researchers, developers, and AI enthusiasts! See [
 - **UI Improvements**: Enhance the web interface
 - **Documentation**: Improve guides and examples
 
-## ⚠️ Ethical Considerations
+## Ethical Considerations
 
 This platform is designed for research purposes. Please consider:
 - **Fair Use**: Respect API provider terms of service
@@ -215,7 +207,7 @@ This platform is designed for research purposes. Please consider:
 - **Research Ethics**: Follow institutional guidelines
 - **Bias Awareness**: Consider AI model biases in results
 
-## 🔧 Configuration Options
+## Configuration Options
 
 ### LLM Provider Settings
 ```python
@@ -240,7 +232,7 @@ NEGOTIATION_CONFIG = {
 }
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 1. **API Key Errors**: Verify keys are correctly configured
@@ -248,15 +240,7 @@ NEGOTIATION_CONFIG = {
 3. **Connection Issues**: Check internet connectivity
 4. **Model Availability**: Ensure selected models are accessible
 
-### Getting Help
-- Open a [GitHub Issue](https://github.com/ayushi-uwc/epistemic_grounding_experiment/issues)
-- Check [Discussions](https://github.com/ayushi-uwc/epistemic_grounding_experiment/discussions)
-- Review [Documentation](docs/)
-
-## 📜 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-**Happy Experimenting!** 🔬✨
-
-For questions, issues, or collaboration opportunities, please reach out through GitHub Issues or Discussions. 
